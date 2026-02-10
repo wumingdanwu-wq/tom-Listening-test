@@ -79,10 +79,10 @@
             <span class="absolute top-0 right-0 bg-blue-100 text-blue-600 text-xs font-bold px-2 py-1 rounded-bl-lg">40分</span>
             <h3 class="font-bold text-slate-800 mb-4">Task 1: Fill in the blanks</h3>
             <div class="space-y-8 text-base text-slate-700 leading-loose">
-                <div>1. Tom has to <input type="text" id="q1_1" class="input-blank w-24" placeholder="?"> the long <input type="text" id="q1_2" class="input-blank w-16" placeholder="?">.</div>
-                <div>2. Ben gives Tom a juicy <input type="text" id="q2" class="input-blank w-20" placeholder="?">.</div>
-                <div>3. Tom says painting the fence is not <input type="text" id="q3" class="input-blank w-20" placeholder="?">.</div>
-                <div>4. Tom sits in the <input type="text" id="q4" class="input-blank w-20" placeholder="?"> and eats the apple.</div>
+                <div>1. Tom has to <input type="text" id="q1_1" autocomplete="off" class="input-blank w-24" placeholder="?"> the long <input type="text" id="q1_2" autocomplete="off" class="input-blank w-16" placeholder="?">.</div>
+                <div>2. Ben gives Tom a juicy <input type="text" id="q2" autocomplete="off" class="input-blank w-20" placeholder="?">.</div>
+                <div>3. Tom says painting the fence is not <input type="text" id="q3" autocomplete="off" class="input-blank w-20" placeholder="?">.</div>
+                <div>4. Tom sits in the <input type="text" id="q4" autocomplete="off" class="input-blank w-20" placeholder="?"> and eats the apple.</div>
                 <div id="exp_tasks" class="hidden">
                     <div id="exp_q1" class="explanation-box"></div>
                     <div id="exp_q2" class="explanation-box"></div>
@@ -285,6 +285,7 @@ function downloadPoster() {
 </body>
 
 </html>
+
 
 
 
