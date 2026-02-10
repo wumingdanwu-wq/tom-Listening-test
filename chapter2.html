@@ -74,65 +74,73 @@
         </details>
     </div>
 
-    <form id="quizForm" onsubmit="submitQuiz(event)">
-        <div class="bg-white rounded-2xl shadow-md p-5 mb-5 border-l-4 border-blue-500 relative text-left">
-            <span class="absolute top-0 right-0 bg-blue-100 text-blue-600 text-xs font-bold px-2 py-1 rounded-bl-lg">40分</span>
-            <h3 class="font-bold text-slate-800 mb-4">Task 1: Fill in the blanks</h3>
-            <div class="space-y-8 text-base text-slate-700 leading-loose">
+   <form id="quizForm" onsubmit="submitQuiz(event)">
+    <div class="bg-white rounded-2xl shadow-md p-5 mb-5 border-l-4 border-blue-500 relative text-left">
+        <span class="absolute top-0 right-0 bg-blue-100 text-blue-600 text-xs font-bold px-2 py-1 rounded-bl-lg">60分</span>
+        <h3 class="font-bold text-slate-800 mb-4">Task 1: Fill in the blanks</h3>
+        <div class="space-y-8 text-base text-slate-700 leading-loose">
+            <div>
                 <div>1. Tom has to <input type="text" id="q1_1" autocomplete="off" class="input-blank w-24" placeholder="?"> the long <input type="text" id="q1_2" autocomplete="off" class="input-blank w-16" placeholder="?">.</div>
+                <div id="exp_q1" class="hidden mt-2 p-3 bg-blue-50 text-xs text-blue-800 rounded-xl border border-blue-100"></div>
+            </div>
+            <div>
                 <div>2. Ben gives Tom a juicy <input type="text" id="q2" autocomplete="off" class="input-blank w-20" placeholder="?">.</div>
+                <div id="exp_q2" class="hidden mt-2 p-3 bg-blue-50 text-xs text-blue-800 rounded-xl border border-blue-100"></div>
+            </div>
+            <div>
                 <div>3. Tom says painting the fence is not <input type="text" id="q3" autocomplete="off" class="input-blank w-20" placeholder="?">.</div>
+                <div id="exp_q3" class="hidden mt-2 p-3 bg-blue-50 text-xs text-blue-800 rounded-xl border border-blue-100"></div>
+            </div>
+            <div>
                 <div>4. Tom sits in the <input type="text" id="q4" autocomplete="off" class="input-blank w-20" placeholder="?"> and eats the apple.</div>
-                <div id="exp_tasks" class="hidden">
-                    <div id="exp_q1" class="explanation-box"></div>
-                    <div id="exp_q2" class="explanation-box"></div>
-                    <div id="exp_q3" class="explanation-box"></div>
-                    <div id="exp_q4" class="explanation-box"></div>
-                </div>
+                <div id="exp_q4" class="hidden mt-2 p-3 bg-blue-50 text-xs text-blue-800 rounded-xl border border-blue-100"></div>
             </div>
         </div>
+    </div>
 
-        <div class="bg-white rounded-2xl shadow-md p-5 mb-8 border-l-4 border-purple-500 relative text-left">
-            <span class="absolute top-0 right-0 bg-purple-100 text-purple-600 text-xs font-bold px-2 py-1 rounded-bl-lg">40分</span>
-            <h3 class="font-bold text-slate-800 mb-4">Task 2: True (T) or False (F)</h3>
-            <div class="space-y-6">
-                <div>
-                    <p class="text-sm font-medium mb-2">1. Tom is very happy to paint the fence at first.</p>
-                    <div class="flex gap-6">
-                        <label class="flex items-center"><input type="radio" name="tf1" value="T" class="mr-1 w-5 h-5"> T</label>
-                        <label class="flex items-center"><input type="radio" name="tf1" value="F" class="mr-1 w-5 h-5"> F</label>
-                    </div>
-                    <div id="exp_tf1" class="hidden explanation-box"></div>
+    <div class="bg-white rounded-2xl shadow-md p-5 mb-8 border-l-4 border-purple-500 relative text-left">
+        <span class="absolute top-0 right-0 bg-purple-100 text-purple-600 text-xs font-bold px-2 py-1 rounded-bl-lg">40分</span>
+        <h3 class="font-bold text-slate-800 mb-4">Task 2: True (T) or False (F)</h3>
+        <div class="space-y-6">
+            <div>
+                <p class="text-sm font-medium mb-2">1. Tom is very happy to paint the fence at first.</p>
+                <div class="flex gap-6">
+                    <label class="flex items-center"><input type="radio" name="tf1" value="T" class="mr-1 w-5 h-5"> T</label>
+                    <label class="flex items-center"><input type="radio" name="tf1" value="F" class="mr-1 w-5 h-5"> F</label>
                 </div>
-                <div>
-                    <p class="text-sm font-medium mb-2">2. Ben pretends to be a steamboat in the street.</p>
-                    <div class="flex gap-6">
-                        <label class="flex items-center"><input type="radio" name="tf2" value="T" class="mr-1 w-5 h-5"> T</label>
-                        <label class="flex items-center"><input type="radio" name="tf2" value="F" class="mr-1 w-5 h-5"> F</label>
-                    </div>
-                    <div id="exp_tf2" class="hidden explanation-box"></div>
+                <div id="exp_tf1" class="hidden mt-2 p-3 bg-purple-50 text-xs text-purple-800 rounded-xl border border-purple-100"></div>
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">2. Ben pretends to be a steamboat in the street.</p>
+                <div class="flex gap-6">
+                    <label class="flex items-center"><input type="radio" name="tf2" value="T" class="mr-1 w-5 h-5"> T</label>
+                    <label class="flex items-center"><input type="radio" name="tf2" value="F" class="mr-1 w-5 h-5"> F</label>
                 </div>
-                <div>
-                    <p class="text-sm font-medium mb-2">3. Tom gives Ben money to help him paint.</p>
-                    <div class="flex gap-6">
-                        <label class="flex items-center"><input type="radio" name="tf3" value="T" class="mr-1 w-5 h-5"> T</label>
-                        <label class="flex items-center"><input type="radio" name="tf3" value="F" class="mr-1 w-5 h-5"> F</label>
-                    </div>
-                    <div id="exp_tf3" class="hidden explanation-box"></div>
+                <div id="exp_tf2" class="hidden mt-2 p-3 bg-purple-50 text-xs text-purple-800 rounded-xl border border-purple-100"></div>
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">3. Tom gives Ben money to help him paint.</p>
+                <div class="flex gap-6">
+                    <label class="flex items-center"><input type="radio" name="tf3" value="T" class="mr-1 w-5 h-5"> T</label>
+                    <label class="flex items-center"><input type="radio" name="tf3" value="F" class="mr-1 w-5 h-5"> F</label>
                 </div>
-                <div>
-                    <p class="text-sm font-medium mb-2">4. Many boys help Tom, and the fence is painted 3 times.</p>
-                    <div class="flex gap-6">
-                        <label class="flex items-center"><input type="radio" name="tf4" value="T" class="mr-1 w-5 h-5"> T</label>
-                        <label class="flex items-center"><input type="radio" name="tf4" value="F" class="mr-1 w-5 h-5"> F</label>
-                    </div>
-                    <div id="exp_tf4" class="hidden explanation-box"></div>
+                <div id="exp_tf3" class="hidden mt-2 p-3 bg-purple-50 text-xs text-purple-800 rounded-xl border border-purple-100"></div>
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">4. Many boys help Tom, and the fence is painted 3 times.</p>
+                <div class="flex gap-6">
+                    <label class="flex items-center"><input type="radio" name="tf4" value="T" class="mr-1 w-5 h-5"> T</label>
+                    <label class="flex items-center"><input type="radio" name="tf4" value="F" class="mr-1 w-5 h-5"> F</label>
                 </div>
+                <div id="exp_tf4" class="hidden mt-2 p-3 bg-purple-50 text-xs text-purple-800 rounded-xl border border-purple-100"></div>
             </div>
         </div>
+    </div>
 
-        <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold py-4 rounded-xl shadow-lg active:scale-95 transition-transform text-lg mb-8">
-            交卷 (Submit)
+    <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold py-4 rounded-xl shadow-lg active:scale-95 transition-transform text-lg mb-8">
+        交卷 (Submit)
+    </button>
+</form>
         </button>
     </form>
 </main>
@@ -140,7 +148,7 @@
 <script>
 // 🔑 第二章 答案库
 const answers = {
-    q1_1: ["whitewash"], q1_2: ["fence"],
+    q1_1: ["paint", "whitewash"], q1_2: ["fence"],
     q2: ["apple"],
     q3: ["work"],
     q4: ["shade"],
@@ -169,42 +177,44 @@ function closePoster() {
 
 function submitQuiz(e) {
     e.preventDefault();
-    let score = 0;
-// 在显示海报的时候，顺便发个勋章（存入浏览器缓存）
-localStorage.setItem('tom_ch2_done', 'true');
-    function checkBlank(id, key) {
-        let el = document.getElementById(id);
-        if(!el) return false;
-        let val = el.value.trim().toLowerCase();
-        if (answers[id].includes(val)) {
-            el.classList.add('correct-input');
-            el.classList.remove('wrong-input');
-            return true;
-        } else {
-            el.classList.add('wrong-input');
-            el.classList.remove('correct-input');
-            return false;
-        }
+    let fillCorrect = 0; // 填空对了几组
+    let tfCorrect = 0;   // 判断对了几题
+
+    // --- 1. 检查填空题 (Task 1) ---
+    function checkBlank(ids, expKey) {
+        let allCorrect = true;
+        ids.forEach(id => {
+            let el = document.getElementById(id);
+            if (el) {
+                let val = el.value.trim().toLowerCase();
+                if (answers[id].includes(val)) {
+                    el.classList.add('correct-input');
+                    el.classList.remove('wrong-input');
+                } else {
+                    el.classList.add('wrong-input');
+                    el.classList.remove('correct-input');
+                    allCorrect = false;
+                }
+            }
+        });
+        // 这一步是关键：只显示当前这道题的解释
+        document.getElementById('exp_' + expKey).classList.remove('hidden');
+        document.getElementById('exp_' + expKey).innerHTML = explanations[expKey];
+        if (allCorrect) fillCorrect++;
     }
 
-    // 检查每一大题
-    if(checkBlank('q1_1', 'q1') && checkBlank('q1_2', 'q1')) score++;
-    if(checkBlank('q2', 'q2')) score++;
-    if(checkBlank('q3', 'q3')) score++;
-    if(checkBlank('q4', 'q4')) score++;
+    // 按照你的题目分组检查
+    checkBlank(['q1_1', 'q1_2'], 'q1'); // 第一题
+    checkBlank(['q1_3'], 'q2');         // 第二题
+    checkBlank(['q1_4'], 'q3');         // 第三题
+    checkBlank(['q1_5'], 'q4');         // 第四题
 
-    // 显示填空题解析
-    document.getElementById('exp_tasks').classList.remove('hidden');
-    ['q1', 'q2', 'q3', 'q4'].forEach(k => {
-        document.getElementById('exp_'+k).innerHTML = explanations[k];
-    });
-
-    // 检查判断题
+    // --- 2. 检查判断题 (Task 2) ---
     ['tf1', 'tf2', 'tf3', 'tf4'].forEach(name => {
         let sel = document.querySelector(`input[name="${name}"]:checked`);
         let expDiv = document.getElementById('exp_' + name);
         if (sel && sel.value === answers[name]) {
-            score++;
+            tfCorrect++;
             expDiv.innerHTML = `<span class="text-green-600 font-bold">回答正确！</span><br>` + explanations[name];
         } else {
             expDiv.innerHTML = `<span class="text-red-600 font-bold">回答错误。</span><br>` + explanations[name];
@@ -212,8 +222,13 @@ localStorage.setItem('tom_ch2_done', 'true');
         expDiv.classList.remove('hidden');
     });
 
-    document.getElementById('poster-score').innerText = score + " / 8";
-    document.getElementById('poster-modal').classList.remove('hidden');
+    // --- 3. 计算并显示总分 ---
+    let totalScore = (fillCorrect * 15) + (tfCorrect * 10);
+    localStorage.setItem('tom_ch2_done', 'true'); // 发勋章
+    
+    document.getElementById('poster-score').innerText = totalScore + " / 100";
+    document.getElementById('poster-modal').classList.remove('hidden'); // 这里就是“显示海报”
+    window.scrollTo(0, 0); 
 }
 
 function downloadPoster() {
@@ -285,6 +300,7 @@ function downloadPoster() {
 </body>
 
 </html>
+
 
 
 
