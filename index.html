@@ -224,39 +224,73 @@ function downloadPoster() {
 }
 </script>
 
-<div id="poster-modal" class="hidden fixed inset-0 z-[60] bg-black/80 flex items-center justify-center p-6 text-slate-800">
-    <div id="poster-content" class="bg-white rounded-3xl overflow-hidden w-full max-w-sm shadow-2xl relative">
-        <div class="h-40 bg-blue-600 flex flex-col items-center justify-center text-white p-6 text-center">
-            <div class="text-xs uppercase tracking-widest opacity-80 mb-2">Achievement Unlocked</div>
-            <div class="text-5xl font-black mb-1" id="poster-score">0 / 8</div>
-            <div class="text-sm font-medium">挑战成功！太棒了！</div>
-        </div>
-        <div class="p-6 text-left">
-            <div class="flex items-center gap-4 mb-6">
-                <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-2xl">🏆</div>
-                <div>
-                    <div class="font-bold">多多（六年级）</div>
-                    <div class="text-xs text-slate-500">完成时间：2026年2月</div>
+<div id="poster-modal" class="hidden fixed inset-0 z-[60] bg-slate-900/90 flex items-center justify-center p-4">
+    <div id="poster-content" class="bg-[#fffdf9] rounded-[2.5rem] overflow-hidden w-full max-w-[360px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative border-8 border-white">
+        
+        <div class="h-44 bg-gradient-to-br from-amber-400 via-orange-500 to-amber-600 flex flex-col items-center justify-center text-white relative">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full"></div>
+            <div class="absolute -bottom-10 -left-10 w-24 h-24 bg-black/10 rounded-full"></div>
+            
+            <div class="text-[10px] uppercase tracking-[0.2em] font-black opacity-80 mb-1">Adventure Achievement</div>
+            
+            <div class="bg-white/20 backdrop-blur-sm rounded-full p-2 mb-2 shadow-inner">
+                <div class="bg-white text-orange-600 w-20 h-20 rounded-full flex flex-col items-center justify-center shadow-lg border-4 border-amber-200">
+                    <span class="text-4xl font-black leading-none" id="poster-score">0 / 8</span>
+                    <span class="text-[10px] font-bold mt-1">TOTAL SCORE</span>
                 </div>
             </div>
-            <div class="space-y-3 mb-8 text-sm">
-                <div class="flex justify-between"><span class="text-slate-500 text-left">学习素材</span><span class="font-medium text-slate-800 text-right">《汤姆·索亚历险记》</span></div>
-                <div class="flex justify-between"><span class="text-slate-500 text-left">核心词汇</span><span class="text-blue-600 font-bold text-right">Closet, Jam, Stronger</span></div>
+            <div class="text-lg font-black tracking-tight drop-shadow-md italic">挑战成功 · 荣誉勋章</div>
+        </div>
+        
+        <div class="p-8 pt-6">
+            <div class="flex items-center gap-4 mb-8 bg-orange-50/50 p-3 rounded-2xl border border-orange-100">
+                <div class="w-14 h-14 rounded-full bg-amber-400 flex items-center justify-center text-3xl shadow-md border-2 border-white">🏆</div>
+                <div class="text-left">
+                    <div class="font-black text-slate-800 text-lg">多多 <span class="text-xs font-normal text-slate-500">(六年级)</span></div>
+                    <div class="text-[10px] text-orange-600 font-bold flex items-center gap-1">
+                        <i class="fas fa-calendar-check"></i> 完成时间：2026年2月
+                    </div>
+                </div>
             </div>
-            <div class="flex items-center justify-between border-t pt-6">
-                <div class="text-[10px] text-slate-400 italic text-left">AI 助学 · 跨学科成长计划<br>扫码加入我的学习战队</div>
-                <img src="myqr.jpg" class="w-12 h-12 rounded shadow-sm border border-slate-100" alt="微信二维码">
+            
+            <div class="space-y-4 mb-8">
+                <div class="flex flex-col gap-1">
+                    <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Learning Material</span>
+                    <span class="font-bold text-slate-800 border-b border-slate-100 pb-1">《汤姆·索亚历险记》第一章</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Key Vocabulary</span>
+                    <div class="flex gap-2">
+                        <span class="bg-blue-100 text-blue-700 text-[10px] px-2 py-0.5 rounded-md font-black">CLOSET</span>
+                        <span class="bg-blue-100 text-blue-700 text-[10px] px-2 py-0.5 rounded-md font-black">JAM</span>
+                        <span class="bg-blue-100 text-blue-700 text-[10px] px-2 py-0.5 rounded-md font-black">STRONGER</span>
+                    </div>
+                </div>
             </div>
-            <button onclick="downloadPoster()" class="mt-4 w-full bg-green-500 text-white py-3 rounded-xl font-bold shadow-lg active:scale-95 transition flex items-center justify-center gap-2">
-                <i class="fas fa-camera"></i> 保存成就海报到相册
+
+            <div class="flex items-center justify-between border-t border-dashed border-slate-200 pt-6">
+                <div class="text-left">
+                    <div class="text-xs font-black text-slate-800 mb-1">AI 助学 · 跨学科特训</div>
+                    <div class="text-[9px] text-slate-400 leading-tight">长按左侧二维码<br>加入我的学习探险队</div>
+                </div>
+                <div class="w-16 h-16 p-1 bg-white border border-slate-100 shadow-sm rounded-lg rotate-3">
+                    <img src="myqr.png" class="w-full h-full object-cover" onerror="this.src='https://api.dicebear.com/7.x/shapes/svg?seed=qr&backgroundColor=f8fafc'">
+                </div>
+            </div>
+
+            <button onclick="downloadPoster()" class="mt-8 w-full bg-slate-900 text-white py-4 rounded-2xl font-black shadow-xl active:scale-95 transition-all flex items-center justify-center gap-3 group">
+                <span class="material-symbols-rounded group-hover:rotate-12 transition-transform">download_for_offline</span>
+                保存高清勋章到相册
             </button>
         </div>
-        <button onclick="closePoster()" class="absolute top-4 right-4 text-white/50 hover:text-white">
-            <i class="fas fa-times-circle text-xl"></i>
+        
+        <button onclick="closePoster()" class="absolute top-4 right-4 bg-black/20 hover:bg-black/40 text-white w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-sm transition-colors">
+            <i class="fas fa-times"></i>
         </button>
     </div>
 </div>
 
 </body>
 </html>
+
 
