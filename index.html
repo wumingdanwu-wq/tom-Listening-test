@@ -3,48 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>汤姆·索亚历险记 - 听力挑战地图</title>
+    <title>汤姆·索亚挑战地图</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-blue-50 p-6">
-    <div class="max-w-md mx-auto text-center">
+<body class="bg-blue-50 p-6 flex flex-col items-center">
+    <div class="w-full max-w-sm text-center">
         <h1 class="text-2xl font-black text-slate-800 mb-2">汤姆·索亚挑战地图</h1>
-        <p class="text-slate-500 mb-8 text-sm">Hi 多多，完成每一章听力，收集所有勋章！</p>
-
-        <div class="grid grid-cols-1 gap-4">
-            <a href="chapter1.html" class="bg-white p-4 rounded-2xl shadow-sm border-2 border-blue-100 flex items-center justify-between active:scale-95 transition">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">1</div>
-                    <div class="text-left">
-                        <div class="font-bold">Chapter 1</div>
-                        <div class="text-[10px] text-slate-400">阿姨在找汤姆</div>
+        <p class="text-slate-500 mb-8 text-sm italic">多多，收集你的 35 枚荣誉勋章吧！</p>
+        
+        <div class="space-y-4">
+            <a href="chapter1.html" class="block bg-white p-5 rounded-3xl shadow-sm border-2 border-blue-100 flex items-center justify-between active:scale-95 transition">
+                <div class="flex items-center gap-4 text-left">
+                    <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold relative">
+                        1
+                        <div id="ch1-check" class="hidden absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                            <i class="fas fa-check text-[10px] text-white"></i>
+                        </div>
                     </div>
+                    <span class="font-bold text-slate-700">第一章：阿姨在找汤姆</span>
                 </div>
                 <i class="fas fa-chevron-right text-slate-300"></i>
             </a>
 
-            <a href="chapter2.html" class="bg-white p-4 rounded-2xl shadow-sm border-2 border-orange-100 flex items-center justify-between active:scale-95 transition">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold">2</div>
-                    <div class="text-left">
-                        <div class="font-bold">Chapter 2</div>
-                        <div class="text-[10px] text-slate-400">伟大的刷墙艺术</div>
+            <a href="chapter2.html" class="block bg-white p-5 rounded-3xl shadow-sm border-2 border-orange-100 flex items-center justify-between active:scale-95 transition">
+                <div class="flex items-center gap-4 text-left">
+                    <div class="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold relative">
+                        2
+                        <div id="ch2-check" class="hidden absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                            <i class="fas fa-check text-[10px] text-white"></i>
+                        </div>
                     </div>
+                    <span class="font-bold text-slate-700">第二章：伟大的刷墙艺术</span>
                 </div>
                 <i class="fas fa-chevron-right text-slate-300"></i>
             </a>
 
-            <div class="bg-slate-100 p-4 rounded-2xl border-2 border-dashed border-slate-200 flex items-center justify-between opacity-50">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-slate-300 rounded-full flex items-center justify-center text-white font-bold"><i class="fas fa-lock text-xs"></i></div>
-                    <div class="text-left">
-                        <div class="font-bold">Chapter 3-35</div>
-                        <div class="text-[10px] text-slate-400">等待老爸更新...</div>
-                    </div>
-                </div>
-            </div>
+            <div class="text-center pt-8 opacity-40 italic text-xs">后续关卡正在赶来的路上...</div>
         </div>
     </div>
+
+    <script>
+        // 自动检查本地存储，看哪些章节完成了
+        window.onload = function() {
+            if (localStorage.getItem('tom_ch1_done')) {
+                document.getElementById('ch1-check').classList.remove('hidden');
+            }
+            if (localStorage.getItem('tom_ch2_done')) {
+                document.getElementById('ch2-check').classList.remove('hidden');
+            }
+        };
+    </script>
 </body>
 </html>
