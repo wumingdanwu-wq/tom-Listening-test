@@ -69,6 +69,8 @@
     </div>
 
     <form id="quizForm" onsubmit="submitQuiz(event)">
+        // 在显示海报的时候，顺便发个勋章（存入浏览器缓存）
+localStorage.setItem('tom_ch2_done', 'true');
         <div class="bg-white rounded-2xl shadow-md p-5 mb-5 border-l-4 border-blue-500 relative">
             <span class="absolute top-0 right-0 bg-blue-100 text-blue-600 text-xs font-bold px-2 py-1 rounded-bl-lg">40分</span>
             <h3 class="font-bold text-slate-800 mb-4 text-left">Task 1: Fill in the blanks</h3>
@@ -289,6 +291,7 @@ function downloadPoster() {
 
 </body>
 </html>
+
 
 
 
