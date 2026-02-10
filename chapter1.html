@@ -165,16 +165,17 @@ function closePoster() {
 
 function submitQuiz(e) {
     e.preventDefault();
-    let score = 0;
-// 在显示海报的时候，顺便发个勋章（存入浏览器缓存）
-localStorage.setItem('tom_ch1_done', 'true');
-    // 检查填空
-    function checkBlank(ids, key) {
+    let fillCorrect = 0; // 填空对了几组
+    let tfCorrect = 0;   // 判断对了几题
+
+    // 1. 检查填空题 (Task 1) - 每对一组 15 分 (共60分)
+    function checkBlank(ids, expId) {
         let allCorrect = true;
         ids.forEach(id => {
             let el = document.getElementById(id);
-            if(el) {
+            if (el) {
                 let val = el.value.trim().toLowerCase();
+                // 检查是否在答案库中
                 if (answers[id].includes(val)) {
                     el.classList.add('correct-input');
                     el.classList.remove('wrong-input');
@@ -185,22 +186,25 @@ localStorage.setItem('tom_ch1_done', 'true');
                 }
             }
         });
-        document.getElementById('exp_' + key).innerHTML = explanations[key];
-        document.getElementById('exp_' + key).classList.remove('hidden');
-        if(allCorrect) score++;
+        // 显示对应的题目解释
+        let expDiv = document.getElementById('exp_' + expId);
+        expDiv.innerHTML = explanations[expId];
+        expDiv.classList.remove('hidden');
+        if (allCorrect) fillCorrect++;
     }
 
+    // 分组运行检查
     checkBlank(['q1_1', 'q1_2'], 'q1');
     checkBlank(['q2'], 'q2');
     checkBlank(['q3_1', 'q3_2'], 'q3');
     checkBlank(['q4'], 'q4');
 
-    // 检查判断
+    // 2. 检查判断题 (Task 2) - 每对一题 10 分 (共40分)
     ['tf1', 'tf2', 'tf3', 'tf4'].forEach(name => {
         let sel = document.querySelector(`input[name="${name}"]:checked`);
         let expDiv = document.getElementById('exp_' + name);
         if (sel && sel.value === answers[name]) {
-            score++;
+            tfCorrect++;
             expDiv.innerHTML = `<span class="text-green-600 font-bold">回答正确！</span><br>` + explanations[name];
         } else {
             expDiv.innerHTML = `<span class="text-red-600 font-bold">回答错误。</span><br>` + explanations[name];
@@ -208,9 +212,15 @@ localStorage.setItem('tom_ch1_done', 'true');
         expDiv.classList.remove('hidden');
     });
 
-    // 显示海报
-    document.getElementById('poster-score').innerText = score + " / 8";
+    // 🏆 计算最终得分 (60 + 40 = 100分)
+    let totalScore = (fillCorrect * 15) + (tfCorrect * 10);
+    
+    // 第一章勋章指令
+    localStorage.setItem('tom_ch1_done', 'true');
+
+    document.getElementById('poster-score').innerText = totalScore + " / 100";
     document.getElementById('poster-modal').classList.remove('hidden');
+    window.scrollTo(0, 0);
 }
 
 // 【新增】海报拍照下载功能
@@ -294,6 +304,7 @@ function downloadPoster() {
 
 </body>
 </html>
+
 
 
 
