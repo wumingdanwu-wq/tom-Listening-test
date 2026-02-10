@@ -7,6 +7,27 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        <div id="cover-page" class="fixed inset-0 z-50 bg-gradient-to-b from-blue-500 to-indigo-700 flex flex-col items-center justify-center p-6 text-white">
+    <div class="w-32 h-32 bg-white/20 rounded-3xl backdrop-blur-md flex items-center justify-center mb-6 shadow-2xl">
+        <i class="fas fa-book-open text-5xl text-yellow-300"></i>
+    </div>
+    <h1 class="text-3xl font-black mb-2 tracking-tight">汤姆·索亚历险记</h1>
+    <p class="text-blue-100 mb-8 opacity-80">六年级英语·跨学科听力特训</p>
+    
+    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 mb-10 w-full max-w-xs border border-white/20">
+        <div class="flex justify-between text-xs mb-2">
+            <span>当前章节</span>
+            <span class="font-bold text-yellow-300">Chapter 1</span>
+        </div>
+        <div class="h-1.5 w-full bg-white/20 rounded-full overflow-hidden">
+            <div class="h-full bg-yellow-400" style="width: 3%"></div>
+        </div>
+    </div>
+
+    <button onclick="startChallenge()" class="w-full max-w-xs bg-white text-blue-600 font-bold py-4 rounded-2xl shadow-xl active:scale-95 transition-transform text-lg">
+        开始今日挑战
+    </button>
+</div>
         body { background-color: #f0f9ff; font-family: 'Segoe UI', Tahoma, sans-serif; -webkit-tap-highlight-color: transparent; }
         /* 填空题样式 */
         .input-blank { border-bottom: 2px solid #94a3b8; background: transparent; text-align: center; color: #2563eb; font-weight: bold; border-radius: 0; padding: 0 5px; transition: all 0.3s; }
@@ -202,6 +223,48 @@
             // 3. 弹窗显示结果
             alert(`🎉 批改完成！\n\n你的得分: ${score} / 8 题\n\n请向下滑动查看详细解析 (💡)`);
         }
+        <div id="poster-modal" class="hidden fixed inset-0 z-[60] bg-black/80 flex items-center justify-center p-6">
+    <div id="poster-content" class="bg-white rounded-3xl overflow-hidden w-full max-w-sm shadow-2xl relative">
+        <div class="h-48 bg-blue-600 flex flex-col items-center justify-center text-white p-6 text-center">
+            <div class="text-xs uppercase tracking-widest opacity-80 mb-2">Achievement Unlocked</div>
+            <div class="text-4xl font-black mb-1" id="poster-score">0 / 8</div>
+            <div class="text-sm font-medium">挑战成功！太棒了！</div>
+        </div>
+        
+        <div class="p-6">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-2xl">🏆</div>
+                <div>
+                    <div class="font-bold text-slate-800">多多（六年级）</div>
+                    <div class="text-xs text-slate-500">完成时间：2026年2月</div>
+                </div>
+            </div>
+            
+            <div class="space-y-3 mb-8">
+                <div class="flex justify-between text-sm">
+                    <span class="text-slate-500">学习素材</span>
+                    <span class="text-slate-800 font-medium">《汤姆·索亚历险记》</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                    <span class="text-slate-500">核心词汇</span>
+                    <span class="text-blue-600 font-bold">Closet, Jam, Stronger</span>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between border-t pt-6">
+                <div class="text-[10px] text-slate-400 italic">
+                    AI 助学 · 跨学科成长计划<br>扫码加入我的学习战队
+                </div>
+                <div class="w-12 h-12 bg-slate-200 rounded"></div>
+            </div>
+        </div>
+        
+        <button onclick="closePoster()" class="absolute top-4 right-4 text-white/50 hover:text-white">
+            <i class="fas fa-times-circle text-xl"></i>
+        </button>
+    </div>
+</div>
     </script>
 </body>
+
 </html>
