@@ -68,69 +68,73 @@
         </details>
     </div>
 
-    <form id="quizForm" onsubmit="submitQuiz(event)">
-        <div class="bg-white rounded-2xl shadow-md p-5 mb-5 border-l-4 border-blue-500 relative">
-            <span class="absolute top-0 right-0 bg-blue-100 text-blue-600 text-xs font-bold px-2 py-1 rounded-bl-lg">40分</span>
-            <h3 class="font-bold text-slate-800 mb-4 text-left">Task 1: Fill in the blanks</h3>
-            <div class="space-y-8 text-base text-slate-700 leading-loose text-left">
-                <div>1. Tom was in the <input type="text" id="q1_1" autocomplete="off" class="input-blank w-20" placeholder="?">. He was eating <input type="text" id="q1_2" autocomplete="off" class="input-blank w-16" placeholder="?">.
-                    <div id="exp_q1" class="hidden explanation-box"></div>
-                </div>
-                <div>2. Tom went <input type="text" id="q2" autocomplete="off" class="input-blank w-24" placeholder="?"> in the river this afternoon.
-                    <div id="exp_q2" class="hidden explanation-box"></div>
-                </div>
-                <div>3. Sid found the thread was <input type="text" id="q3_1" autocomplete="off" class="input-blank w-16" placeholder="?">, but it was <input type="text" id="q3_2" autocomplete="off" class="input-blank w-16" placeholder="?"> in the morning.
-                    <div id="exp_q3" class="hidden explanation-box"></div>
-                </div>
-                <div>4. Tom said: "I am <input type="text" id="q4" autocomplete="off" class="input-blank w-24" placeholder="?"> than you!"
-                    <div id="exp_q4" class="hidden explanation-box"></div>
-                </div>
+   <form id="quizForm" onsubmit="submitQuiz(event)">
+    <div class="bg-white rounded-2xl shadow-md p-5 mb-5 border-l-4 border-blue-500 relative text-left">
+        <span class="absolute top-0 right-0 bg-blue-100 text-blue-600 text-xs font-bold px-2 py-1 rounded-bl-lg">60分</span>
+        <h3 class="font-bold text-slate-800 mb-4">Task 1: Fill in the blanks</h3>
+        <div class="space-y-8 text-base text-slate-700 leading-loose">
+            <div>
+                <div>1. Tom was in the <input type="text" id="q1_1" autocomplete="off" class="input-blank w-20" placeholder="?">. He was eating <input type="text" id="q1_2" autocomplete="off" class="input-blank w-16" placeholder="?">.</div>
+                <div id="exp_q1" class="hidden mt-2 p-3 bg-blue-50 text-xs text-blue-800 rounded-xl border border-blue-100"></div>
+            </div>
+            <div>
+                <div>2. Tom went <input type="text" id="q2" autocomplete="off" class="input-blank w-24" placeholder="?"> in the river this afternoon.</div>
+                <div id="exp_q2" class="hidden mt-2 p-3 bg-blue-50 text-xs text-blue-800 rounded-xl border border-blue-100"></div>
+            </div>
+            <div>
+                <div>3. Sid found the thread was <input type="text" id="q3_1" autocomplete="off" class="input-blank w-16" placeholder="?">, but it was <input type="text" id="q3_2" autocomplete="off" class="input-blank w-16" placeholder="?"> in the morning.</div>
+                <div id="exp_q3" class="hidden mt-2 p-3 bg-blue-50 text-xs text-blue-800 rounded-xl border border-blue-100"></div>
+            </div>
+            <div>
+                <div>4. Tom said: "I am <input type="text" id="q4" autocomplete="off" class="input-blank w-24" placeholder="?"> than you!"</div>
+                <div id="exp_q4" class="hidden mt-2 p-3 bg-blue-50 text-xs text-blue-800 rounded-xl border border-blue-100"></div>
             </div>
         </div>
+    </div>
 
-        <div class="bg-white rounded-2xl shadow-md p-5 mb-8 border-l-4 border-purple-500 relative">
-            <span class="absolute top-0 right-0 bg-purple-100 text-purple-600 text-xs font-bold px-2 py-1 rounded-bl-lg">40分</span>
-            <h3 class="font-bold text-slate-800 mb-4 text-left">Task 2: True (T) or False (F)</h3>
-            <div class="space-y-6 text-left">
-                <div>
-                    <p class="text-sm font-medium mb-2">1. Tom was a "Model Boy" in the village.</p>
-                    <div class="flex gap-6">
-                        <label class="flex items-center"><input type="radio" name="tf1" value="T" class="mr-1 w-5 h-5"> T</label>
-                        <label class="flex items-center"><input type="radio" name="tf1" value="F" class="mr-1 w-5 h-5"> F</label>
-                    </div>
-                    <div id="exp_tf1" class="hidden explanation-box"></div>
+    <div class="bg-white rounded-2xl shadow-md p-5 mb-8 border-l-4 border-purple-500 relative text-left">
+        <span class="absolute top-0 right-0 bg-purple-100 text-purple-600 text-xs font-bold px-2 py-1 rounded-bl-lg">40分</span>
+        <h3 class="font-bold text-slate-800 mb-4">Task 2: True (T) or False (F)</h3>
+        <div class="space-y-6">
+            <div>
+                <p class="text-sm font-medium mb-2">1. Tom was a "Model Boy" in the village.</p>
+                <div class="flex gap-6">
+                    <label class="flex items-center"><input type="radio" name="tf1" value="T" class="mr-1 w-5 h-5"> T</label>
+                    <label class="flex items-center"><input type="radio" name="tf1" value="F" class="mr-1 w-5 h-5"> F</label>
                 </div>
-                <div>
-                    <p class="text-sm font-medium mb-2">2. Aunt Polly used white thread to sew Tom's collar.</p>
-                    <div class="flex gap-6">
-                        <label class="flex items-center"><input type="radio" name="tf2" value="T" class="mr-1 w-5 h-5"> T</label>
-                        <label class="flex items-center"><input type="radio" name="tf2" value="F" class="mr-1 w-5 h-5"> F</label>
-                    </div>
-                    <div id="exp_tf2" class="hidden explanation-box"></div>
+                <div id="exp_tf1" class="hidden mt-2 p-3 bg-purple-50 text-xs text-purple-800 rounded-xl border border-purple-100"></div>
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">2. Aunt Polly used white thread to sew Tom's collar.</p>
+                <div class="flex gap-6">
+                    <label class="flex items-center"><input type="radio" name="tf2" value="T" class="mr-1 w-5 h-5"> T</label>
+                    <label class="flex items-center"><input type="radio" name="tf2" value="F" class="mr-1 w-5 h-5"> F</label>
                 </div>
-                <div>
-                    <p class="text-sm font-medium mb-2">3. Tom went to school and studied hard today.</p>
-                    <div class="flex gap-6">
-                        <label class="flex items-center"><input type="radio" name="tf3" value="T" class="mr-1 w-5 h-5"> T</label>
-                        <label class="flex items-center"><input type="radio" name="tf3" value="F" class="mr-1 w-5 h-5"> F</label>
-                    </div>
-                    <div id="exp_tf3" class="hidden explanation-box"></div>
+                <div id="exp_tf2" class="hidden mt-2 p-3 bg-purple-50 text-xs text-purple-800 rounded-xl border border-purple-100"></div>
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">3. Tom went to school and studied hard today.</p>
+                <div class="flex gap-6">
+                    <label class="flex items-center"><input type="radio" name="tf3" value="T" class="mr-1 w-5 h-5"> T</label>
+                    <label class="flex items-center"><input type="radio" name="tf3" value="F" class="mr-1 w-5 h-5"> F</label>
                 </div>
-                <div>
-                    <p class="text-sm font-medium mb-2">4. Tom had a fight with a new boy and won.</p>
-                    <div class="flex gap-6">
-                        <label class="flex items-center"><input type="radio" name="tf4" value="T" class="mr-1 w-5 h-5"> T</label>
-                        <label class="flex items-center"><input type="radio" name="tf4" value="F" class="mr-1 w-5 h-5"> F</label>
-                    </div>
-                    <div id="exp_tf4" class="hidden explanation-box"></div>
+                <div id="exp_tf3" class="hidden mt-2 p-3 bg-purple-50 text-xs text-purple-800 rounded-xl border border-purple-100"></div>
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">4. Tom had a fight with a new boy and won.</p>
+                <div class="flex gap-6">
+                    <label class="flex items-center"><input type="radio" name="tf4" value="T" class="mr-1 w-5 h-5"> T</label>
+                    <label class="flex items-center"><input type="radio" name="tf4" value="F" class="mr-1 w-5 h-5"> F</label>
                 </div>
+                <div id="exp_tf4" class="hidden mt-2 p-3 bg-purple-50 text-xs text-purple-800 rounded-xl border border-purple-100"></div>
             </div>
         </div>
+    </div>
 
-        <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold py-4 rounded-xl shadow-lg active:scale-95 transition-transform text-lg mb-8">
-            交卷 (Submit)
-        </button>
-    </form>
+    <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold py-4 rounded-xl shadow-lg active:scale-95 transition-transform text-lg mb-8">
+        交卷 (Submit)
+    </button>
+</form>
 </main>
 
 <script>
@@ -290,6 +294,7 @@ function downloadPoster() {
 
 </body>
 </html>
+
 
 
 
