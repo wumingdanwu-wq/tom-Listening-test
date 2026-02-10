@@ -40,20 +40,44 @@
             </a>
 
             <div class="text-center pt-8 opacity-40 italic text-xs">等待老爸更新...</div>
+            <div class="mt-12 pb-8">
+    <button onclick="resetProgress()" class="text-[10px] text-slate-300 hover:text-red-400 transition flex items-center gap-1 mx-auto">
+        <i class="fas fa-undo-alt"></i> 重置所有通关记录
+    </button>
+</div>
         </div>
     </div>
 
-    <script>
-        // 自动检查本地存储，看哪些章节完成了
-        window.onload = function() {
-            if (localStorage.getItem('tom_ch1_done')) {
-                document.getElementById('ch1-check').classList.remove('hidden');
-            }
-            if (localStorage.getItem('tom_ch2_done')) {
-                document.getElementById('ch2-check').classList.remove('hidden');
-            }
-        };
-    </script>
+   <script>
+    // 自动查岗逻辑
+    function checkProgress() {
+        if (localStorage.getItem('tom_ch1_done')) {
+            document.getElementById('ch1-check').classList.remove('hidden');
+        } else {
+            document.getElementById('ch1-check').classList.add('hidden');
+        }
+        
+        if (localStorage.getItem('tom_ch2_done')) {
+            document.getElementById('ch2-check').classList.remove('hidden');
+        } else {
+            document.getElementById('ch2-check').classList.add('hidden');
+        }
+    }
+
+    // 复原/重置逻辑
+    function resetProgress() {
+        if (confirm('老爸，确定要清除所有辛苦攒下的勋章，重新挑战吗？')) {
+            localStorage.removeItem('tom_ch1_done');
+            localStorage.removeItem('tom_ch2_done');
+            // 如果以后有更多章节，记得在这里补上对应的 removeItem
+            checkProgress(); // 立即更新界面，勾勾就消失了
+        }
+    }
+
+    // 页面一打开就执行查岗
+    window.onload = checkProgress;
+</script>
 </body>
 </html>
+
 
