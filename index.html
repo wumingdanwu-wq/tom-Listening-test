@@ -7,7 +7,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        <div id="cover-page" class="fixed inset-0 z-50 bg-gradient-to-b from-blue-500 to-indigo-700 flex flex-col items-center justify-center p-6 text-white">
+        body { background-color: #f0f9ff; font-family: 'Segoe UI', Tahoma, sans-serif; -webkit-tap-highlight-color: transparent; }
+        /* 填空题样式 */
+        .input-blank { border-bottom: 2px solid #94a3b8; background: transparent; text-align: center; color: #2563eb; font-weight: bold; border-radius: 0; padding: 0 5px; transition: all 0.3s; }
+        .input-blank:focus { border-color: #3b82f6; outline: none; background-color: rgba(59, 130, 246, 0.1); }
+        /* 批改后的颜色 */
+        .correct-input { border-color: #22c55e !important; color: #16a34a !important; background-color: #f0fdf4 !important; }
+        .wrong-input { border-color: #ef4444 !important; color: #dc2626 !important; background-color: #fef2f2 !important; }
+        /* 解析框样式 */
+        .explanation-box { background-color: #f1f5f9; border-left: 4px solid #3b82f6; padding: 12px; margin-top: 8px; font-size: 0.9rem; color: #334155; border-radius: 4px; line-height: 1.6; }
+    </style>
+</head>
+<body class="pb-16">
+<div id="cover-page" class="fixed inset-0 z-50 bg-gradient-to-b from-blue-500 to-indigo-700 flex flex-col items-center justify-center p-6 text-white">
     <div class="w-32 h-32 bg-white/20 rounded-3xl backdrop-blur-md flex items-center justify-center mb-6 shadow-2xl">
         <i class="fas fa-book-open text-5xl text-yellow-300"></i>
     </div>
@@ -28,19 +40,6 @@
         开始今日挑战
     </button>
 </div>
-        body { background-color: #f0f9ff; font-family: 'Segoe UI', Tahoma, sans-serif; -webkit-tap-highlight-color: transparent; }
-        /* 填空题样式 */
-        .input-blank { border-bottom: 2px solid #94a3b8; background: transparent; text-align: center; color: #2563eb; font-weight: bold; border-radius: 0; padding: 0 5px; transition: all 0.3s; }
-        .input-blank:focus { border-color: #3b82f6; outline: none; background-color: rgba(59, 130, 246, 0.1); }
-        /* 批改后的颜色 */
-        .correct-input { border-color: #22c55e !important; color: #16a34a !important; background-color: #f0fdf4 !important; }
-        .wrong-input { border-color: #ef4444 !important; color: #dc2626 !important; background-color: #fef2f2 !important; }
-        /* 解析框样式 */
-        .explanation-box { background-color: #f1f5f9; border-left: 4px solid #3b82f6; padding: 12px; margin-top: 8px; font-size: 0.9rem; color: #334155; border-radius: 4px; line-height: 1.6; }
-    </style>
-</head>
-<body class="pb-16">
-
     <header class="bg-white shadow-sm sticky top-0 z-20 px-4 py-3 flex justify-between items-center">
         <h1 class="text-lg font-bold text-slate-800"><i class="fas fa-headphones text-blue-500 mr-2"></i>Tom Sawyer (Ch.1)</h1>
         <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Grade 6</span>
@@ -147,124 +146,117 @@
             </button>
         </form>
     </main>
+<script>
+   // 🔑 完整答案库
+const answers = {
+    q1_1: ["closet"], q1_2: ["jam"],
+    q2: ["swimming"],
+    q3_1: ["black"], q3_2: ["white"],
+    q4: ["stronger"],
+    tf1: "F", tf2: "T", tf3: "F", tf4: "T"
+};
 
-    <script>
-        // 🔑 完整答案库
-        const answers = {
-            q1_1: ["closet"], q1_2: ["jam"],
-            q2: ["swimming"],
-            q3_1: ["black"], q3_2: ["white"],
-            q4: ["stronger"],
-            tf1: "F", tf2: "T", tf3: "F", tf4: "T"
-        };
+// 💡 详细解析库
+const explanations = {
+    q1: "✅ <b>原文定位:</b> Tom was in the <b>closet</b>. He was eating <b>jam</b>.<br>汤姆躲在壁橱里吃果酱。",
+    q2: "✅ <b>原文定位:</b> He went <b>swimming</b> in the river.<br>他下午去游泳了。",
+    q3: "✅ <b>原文定位:</b> Sid said: The thread is <b>black</b>. But you used <b>white</b> thread.<br>希德发现线变成了黑色。",
+    q4: "✅ <b>原文定位:</b> Tom said: I am <b>stronger</b> than you!<br>汤姆对新男孩说：我比你强壮！",
+    tf1: "❌ <b>False.</b> 汤姆是个调皮鬼 (naughty boy)，不是模范生 (model boy)。",
+    tf2: "✅ <b>True.</b> 波莉姨妈早上确实用的是白线 (white thread)。",
+    tf3: "❌ <b>False.</b> 他没去上学 (He did not go to school)，而是去游泳了。",
+    tf4: "✅ <b>True.</b> 原文提到：Tom was the winner. (汤姆赢了)"
+};
 
-        // 💡 详细解析库
-        const explanations = {
-            q1: "✅ <b>原文定位:</b> Tom was in the <b>closet</b>. He was eating <b>jam</b>.<br>汤姆躲在壁橱里吃果酱。",
-            q2: "✅ <b>原文定位:</b> He went <b>swimming</b> in the river.<br>他下午去游泳了。",
-            q3: "✅ <b>原文定位:</b> Sid said: The thread is <b>black</b>. But you used <b>white</b> thread.<br>希德发现线变成了黑色。",
-            q4: "✅ <b>原文定位:</b> Tom said: I am <b>stronger</b> than you!<br>汤姆对新男孩说：我比你强壮！",
-            tf1: "❌ <b>False.</b> 汤姆是个调皮鬼 (naughty boy)，不是模范生 (model boy)。",
-            tf2: "✅ <b>True.</b> 波莉姨妈早上确实用的是白线 (white thread)。",
-            tf3: "❌ <b>False.</b> 他没去上学 (He did not go to school)，而是去游泳了。",
-            tf4: "✅ <b>True.</b> 原文提到：Tom was the winner. (汤姆赢了)"
-        };
+// 1. 封面按钮逻辑
+function startChallenge() {
+    document.getElementById('cover-page').style.display = 'none';
+    window.scrollTo(0, 0); 
+}
 
-        function submitQuiz(e) {
-            e.preventDefault();
-            let score = 0;
-            let total = 8; // 4填空(算4大题) + 4判断
+// 2. 关闭海报逻辑
+function closePoster() {
+    document.getElementById('poster-modal').classList.add('hidden');
+}
 
-            // 1. 检查填空题 (支持大小写)
-            function checkBlank(ids, key) {
-                let allCorrect = true;
-                ids.forEach(id => {
-                    let el = document.getElementById(id);
-                    let val = el.value.trim().toLowerCase();
-                    if (answers[id].includes(val)) {
-                        el.classList.add('correct-input');
-                        el.classList.remove('wrong-input');
-                    } else {
-                        el.classList.add('wrong-input');
-                        el.classList.remove('correct-input');
-                        allCorrect = false;
-                    }
-                });
-                
-                // 显示解析
-                let expDiv = document.getElementById('exp_' + key);
-                expDiv.innerHTML = explanations[key];
-                expDiv.classList.remove('hidden');
-                
-                if(allCorrect) score++;
-            }
+// 3. 提交批改逻辑
+function submitQuiz(e) {
+    e.preventDefault();
+    let score = 0;
 
-            checkBlank(['q1_1', 'q1_2'], 'q1');
-            checkBlank(['q2'], 'q2');
-            checkBlank(['q3_1', 'q3_2'], 'q3');
-            checkBlank(['q4'], 'q4');
-
-            // 2. 检查判断题
-            function checkTF(name) {
-                let sel = document.querySelector(`input[name="${name}"]:checked`);
-                let expDiv = document.getElementById('exp_' + name);
-                
-                if (sel && sel.value === answers[name]) {
-                    score++;
-                    expDiv.innerHTML = `<span class="text-green-600 font-bold">回答正确！</span><br>` + explanations[name];
+    function checkBlank(ids, key) {
+        let allCorrect = true;
+        ids.forEach(id => {
+            let el = document.getElementById(id);
+            if(el) {
+                let val = el.value.trim().toLowerCase();
+                if (answers[id].includes(val)) {
+                    el.classList.add('correct-input');
+                    el.classList.remove('wrong-input');
                 } else {
-                    expDiv.innerHTML = `<span class="text-red-600 font-bold">回答错误。</span><br>` + explanations[name];
+                    el.classList.add('wrong-input');
+                    el.classList.remove('correct-input');
+                    allCorrect = false;
                 }
-                expDiv.classList.remove('hidden');
             }
+        });
+        document.getElementById('exp_' + key).innerHTML = explanations[key];
+        document.getElementById('exp_' + key).classList.remove('hidden');
+        if(allCorrect) score++;
+    }
 
-            checkTF('tf1'); checkTF('tf2'); checkTF('tf3'); checkTF('tf4');
+    checkBlank(['q1_1', 'q1_2'], 'q1');
+    checkBlank(['q2'], 'q2');
+    checkBlank(['q3_1', 'q3_2'], 'q3');
+    checkBlank(['q4'], 'q4');
 
-            // 3. 弹窗显示结果
-            alert(`🎉 批改完成！\n\n你的得分: ${score} / 8 题\n\n请向下滑动查看详细解析 (💡)`);
+    ['tf1', 'tf2', 'tf3', 'tf4'].forEach(name => {
+        let sel = document.querySelector(`input[name="${name}"]:checked`);
+        let expDiv = document.getElementById('exp_' + name);
+        if (sel && sel.value === answers[name]) {
+            score++;
+            expDiv.innerHTML = `<span class="text-green-600 font-bold">回答正确！</span><br>` + explanations[name];
+        } else {
+            expDiv.innerHTML = `<span class="text-red-600 font-bold">回答错误。</span><br>` + explanations[name];
         }
-        <div id="poster-modal" class="hidden fixed inset-0 z-[60] bg-black/80 flex items-center justify-center p-6">
+        expDiv.classList.remove('hidden');
+    });
+
+    // 🏆 显示海报
+    document.getElementById('poster-score').innerText = score + " / 8";
+    document.getElementById('poster-modal').classList.remove('hidden');
+}
+</script>
+
+<div id="poster-modal" class="hidden fixed inset-0 z-[60] bg-black/80 flex items-center justify-center p-6 text-slate-800">
     <div id="poster-content" class="bg-white rounded-3xl overflow-hidden w-full max-w-sm shadow-2xl relative">
-        <div class="h-48 bg-blue-600 flex flex-col items-center justify-center text-white p-6 text-center">
+        <div class="h-40 bg-blue-600 flex flex-col items-center justify-center text-white p-6 text-center">
             <div class="text-xs uppercase tracking-widest opacity-80 mb-2">Achievement Unlocked</div>
-            <div class="text-4xl font-black mb-1" id="poster-score">0 / 8</div>
+            <div class="text-5xl font-black mb-1" id="poster-score">0 / 8</div>
             <div class="text-sm font-medium">挑战成功！太棒了！</div>
         </div>
-        
-        <div class="p-6">
+        <div class="p-6 text-left">
             <div class="flex items-center gap-4 mb-6">
                 <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-2xl">🏆</div>
                 <div>
-                    <div class="font-bold text-slate-800">多多（六年级）</div>
+                    <div class="font-bold">多多（六年级）</div>
                     <div class="text-xs text-slate-500">完成时间：2026年2月</div>
                 </div>
             </div>
-            
-            <div class="space-y-3 mb-8">
-                <div class="flex justify-between text-sm">
-                    <span class="text-slate-500">学习素材</span>
-                    <span class="text-slate-800 font-medium">《汤姆·索亚历险记》</span>
-                </div>
-                <div class="flex justify-between text-sm">
-                    <span class="text-slate-500">核心词汇</span>
-                    <span class="text-blue-600 font-bold">Closet, Jam, Stronger</span>
-                </div>
+            <div class="space-y-3 mb-8 text-sm">
+                <div class="flex justify-between"><span class="text-slate-500">学习素材</span><span class="font-medium text-slate-800">《汤姆·索亚历险记》</span></div>
+                <div class="flex justify-between"><span class="text-slate-500">核心词汇</span><span class="text-blue-600 font-bold">Closet, Jam, Stronger</span></div>
             </div>
-
             <div class="flex items-center justify-between border-t pt-6">
-                <div class="text-[10px] text-slate-400 italic">
-                    AI 助学 · 跨学科成长计划<br>扫码加入我的学习战队
-                </div>
+                <div class="text-[10px] text-slate-400 italic">AI 助学 · 跨学科成长计划<br>扫码加入我的学习战队</div>
                 <div class="w-12 h-12 bg-slate-200 rounded"></div>
             </div>
         </div>
-        
         <button onclick="closePoster()" class="absolute top-4 right-4 text-white/50 hover:text-white">
             <i class="fas fa-times-circle text-xl"></i>
         </button>
     </div>
 </div>
-    </script>
 </body>
-
 </html>
+
