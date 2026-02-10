@@ -74,7 +74,7 @@
         </details>
     </div>
 
-   <form id="quizForm" onsubmit="submitQuiz(event)">
+<form id="quizForm" onsubmit="submitQuiz(event)">
     <div class="bg-white rounded-2xl shadow-md p-5 mb-5 border-l-4 border-blue-500 relative text-left">
         <span class="absolute top-0 right-0 bg-blue-100 text-blue-600 text-xs font-bold px-2 py-1 rounded-bl-lg">60分</span>
         <h3 class="font-bold text-slate-800 mb-4">Task 1: Fill in the blanks</h3>
@@ -100,7 +100,7 @@
 
     <div class="bg-white rounded-2xl shadow-md p-5 mb-8 border-l-4 border-purple-500 relative text-left">
         <span class="absolute top-0 right-0 bg-purple-100 text-purple-600 text-xs font-bold px-2 py-1 rounded-bl-lg">40分</span>
-        <h3 class="font-bold text-slate-800 mb-4">Task 2: True (T) or False (F)</h3>
+        <h3 class="font-bold text-slate-800 mb-4 text-left">Task 2: True (T) or False (F)</h3>
         <div class="space-y-6">
             <div>
                 <p class="text-sm font-medium mb-2">1. Tom is very happy to paint the fence at first.</p>
@@ -180,14 +180,15 @@ function submitQuiz(e) {
     let fillCorrect = 0; // 填空对了几组
     let tfCorrect = 0;   // 判断对了几题
 
-    // --- 1. 检查填空题 (Task 1) ---
-    function checkBlank(ids, expKey) {
+    // --- 1. 检查填空题 (每对一组 15 分) ---
+    function checkBlank(ids, expId) {
         let allCorrect = true;
         ids.forEach(id => {
             let el = document.getElementById(id);
             if (el) {
                 let val = el.value.trim().toLowerCase();
-                if (answers[id].includes(val)) {
+                // 兼容 paint 和 whitewash
+                if (answers[id] && answers[id].includes(val)) {
                     el.classList.add('correct-input');
                     el.classList.remove('wrong-input');
                 } else {
@@ -197,38 +198,43 @@ function submitQuiz(e) {
                 }
             }
         });
-        // 这一步是关键：只显示当前这道题的解释
-        document.getElementById('exp_' + expKey).classList.remove('hidden');
-        document.getElementById('exp_' + expKey).innerHTML = explanations[expKey];
+        // 显示解析
+        let expDiv = document.getElementById('exp_' + expId);
+        if (expDiv) {
+            expDiv.innerHTML = explanations[expId];
+            expDiv.classList.remove('hidden');
+        }
         if (allCorrect) fillCorrect++;
     }
 
-    // 按照你的题目分组检查
-    checkBlank(['q1_1', 'q1_2'], 'q1'); // 第一题
-    checkBlank(['q1_3'], 'q2');         // 第二题
-    checkBlank(['q1_4'], 'q3');         // 第三题
-    checkBlank(['q1_5'], 'q4');         // 第四题
+    // 这一步必须和 HTML 里的 ID 完全对应！
+    checkBlank(['q1_1', 'q1_2'], 'q1'); // 检查第一题的两个空
+    checkBlank(['q2'], 'q2');           // 检查第二题
+    checkBlank(['q3'], 'q3');           // 检查第三题
+    checkBlank(['q4'], 'q4');           // 检查第四题
 
-    // --- 2. 检查判断题 (Task 2) ---
+    // --- 2. 检查判断题 (每对一题 10 分) ---
     ['tf1', 'tf2', 'tf3', 'tf4'].forEach(name => {
         let sel = document.querySelector(`input[name="${name}"]:checked`);
         let expDiv = document.getElementById('exp_' + name);
-        if (sel && sel.value === answers[name]) {
-            tfCorrect++;
-            expDiv.innerHTML = `<span class="text-green-600 font-bold">回答正确！</span><br>` + explanations[name];
-        } else {
-            expDiv.innerHTML = `<span class="text-red-600 font-bold">回答错误。</span><br>` + explanations[name];
+        if (expDiv) {
+            if (sel && sel.value === answers[name]) {
+                tfCorrect++;
+                expDiv.innerHTML = `<span class="text-green-600 font-bold">回答正确！</span><br>` + explanations[name];
+            } else {
+                expDiv.innerHTML = `<span class="text-red-600 font-bold">回答错误。</span><br>` + explanations[name];
+            }
+            expDiv.classList.remove('hidden');
         }
-        expDiv.classList.remove('hidden');
     });
 
-    // --- 3. 计算并显示总分 ---
+    // --- 3. 计算总分并显示海报 ---
     let totalScore = (fillCorrect * 15) + (tfCorrect * 10);
-    localStorage.setItem('tom_ch2_done', 'true'); // 发勋章
-    
+    localStorage.setItem('tom_ch2_done', 'true'); // 存入通关勋章
+
     document.getElementById('poster-score').innerText = totalScore + " / 100";
-    document.getElementById('poster-modal').classList.remove('hidden'); // 这里就是“显示海报”
-    window.scrollTo(0, 0); 
+    document.getElementById('poster-modal').classList.remove('hidden');
+    window.scrollTo(0, 0);
 }
 
 function downloadPoster() {
@@ -310,6 +316,7 @@ function downloadPoster() {
 </body>
 
 </html>
+
 
 
 
