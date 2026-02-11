@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>汤姆·索亚历险记 - 第3章听力特训</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    
+    <style>
+        body { background-color: #f0f9ff; font-family: 'Segoe UI', Tahoma, sans-serif; -webkit-tap-highlight-color: transparent; }
+        .input-blank { border-bottom: 2px solid #94a3b8; background: transparent; text-align: center; color: #2563eb; font-weight: bold; border-radius: 0; padding: 0 5px; transition: all 0.3s; }
+        .input-blank:focus { border-color: #3b82f6; outline: none; background-color: rgba(59, 130, 246, 0.1); }
+        .correct-input { border-color: #22c55e !important; color: #16a34a !important; background-color: #f0fdf4 !important; }
+        .wrong-input { border-color: #ef4444 !important; color: #dc2626 !important; background-color: #fef2f2 !important; }
+        .hidden-node { display: none !important; opacity: 0; pointer-events: none; }
+    </style>
+</head>
+
+<body class="pb-16">
+
+<div id="cover-page" class="fixed inset-0 z-50 bg-gradient-to-b from-blue-600 to-indigo-800 flex flex-col items-center justify-center p-6 text-white text-center transition-all duration-500">
+    <div class="w-32 h-32 bg-white/20 rounded-3xl backdrop-blur-md flex items-center justify-center mb-6 shadow-2xl">
+        <i class="fas fa-paint-roller text-5xl text-yellow-300"></i>
+    </div>
+    <h1 class="text-3xl font-black mb-2 tracking-tight">汤姆·索亚历险记</h1>
+    <p class="text-blue-100 mb-8 opacity-80">六年级英语·跨学科听力特训</p>
+    
+    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 mb-10 w-full max-w-xs border border-white/20 text-left">
+        <div class="flex justify-between text-xs mb-2">
+            <span>当前进度</span>
+            <span class="font-bold text-yellow-300">Chapter 3</span>
+        </div>
+        <div class="h-1.5 w-full bg-white/20 rounded-full overflow-hidden">
+            <div class="h-full bg-yellow-400" style="width: 15%"></div>
+        </div>
+    </div>
+
+    <button type="button" onclick="startChallenge()" class="w-full max-w-xs bg-white text-blue-700 font-black py-4 rounded-2xl shadow-2xl active:scale-95 transition-transform text-lg">
+        开始今日挑战
+    </button>
+</div>
+
+<header class="bg-white shadow-sm sticky top-0 z-20 px-4 py-3 flex justify-between items-center">
+    <h1 class="text-lg font-bold text-slate-800"><i class="fas fa-headphones text-blue-500 mr-2"></i>Tom Sawyer (Ch.3)</h1>
+    <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Grade 6</span>
+</header>
+
+<main class="px-4 mt-4 max-w-md mx-auto">
+    <div class="bg-white rounded-2xl shadow-lg p-5 mb-6 border border-blue-100 text-left">
+        <h2 class="font-bold text-slate-700 mb-3">Step 1: Listen</h2>
+        <audio controls class="w-full h-10 mb-4 rounded bg-slate-100">
+            <source src="tom3.wav" type="audio/wav">
+        </audio>
+
+        <details class="group">
+            <summary class="flex items-center justify-between cursor-pointer list-none text-sm text-blue-600 font-bold bg-blue-50 p-3 rounded-lg hover:bg-blue-100 transition">
+                <span>📖 听不懂？点击查看完整原文</span>
+                <i class="fas fa-chevron-down transition group-open:rotate-180"></i>
+            </summary>
+            <div class="mt-2 text-sm text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-lg border border-slate-200 font-serif h-64 overflow-y-auto">
+                <p class="mb-3"><b>Narrator:</b> Tom finishes the fence. It looks beautiful.</p>
+                <p class="mb-3"><b>Tom:</b> "Aunt Polly, may I go and play now?"</p>
+                <p class="mb-3"><b>Aunt Polly:</b> "Is the work done?"</p>
+                <p class="mb-3"><b>Tom:</b> "Yes, it is all done."</p>
+                <p class="mb-3"><b>Narrator:</b> Aunt Polly goes to see. She is very surprised.</p>
+                <p class="mb-3">The fence is all white! She is very happy. She gives Tom a big red apple.</p>
+                <p class="mb-3"><b>Narrator:</b> Later, Tom sees a new girl in a garden. She has yellow hair and blue eyes.</p>
+                <p class="mb-3">Tom likes her very much. He dances for her. The girl gives him a flower.</p>
+                <p class="mb-3"><b>Narrator:</b> At dinner, the family sits together. Tom's brother, Sid, reaches for the sugar bowl. Crash!</p>
+                <p class="mb-3">The bowl falls and breaks. But Aunt Polly hits Tom!</p>
+                <p class="mb-3"><b>Tom:</b> "Stop! I didn't do it. Sid broke it!"</p>
+                <p class="mb-3"><b>Narrator:</b> Aunt Polly is sorry, but she does not say it. Tom is very sad.</p>
+                <p class="mb-3">He goes to the new girl's house at night. He stands under her window. Suddenly, a maid throws cold water on him. Poor Tom runs home.</p>
+            </div>
+        </details>
+    </div>
+
+   <form id="quizForm" onsubmit="submitQuiz(event)">
+    <div class="bg-white rounded-2xl shadow-md p-5 mb-5 border-l-4 border-blue-500 relative text-left">
+        <span class="absolute top-0 right-0 bg-blue-100 text-blue-600 text-xs font-bold px-2 py-1 rounded-bl-lg">60分</span>
+        <h3 class="font-bold text-slate-800 mb-4">Task 1: Fill in the blanks</h3>
+        <div class="space-y-8 text-base text-slate-700 leading-loose">
+            <div>
+                <div>1. Aunt Polly is very <input type="text" id="q1" autocomplete="off" class="input-blank w-24" placeholder="?"> because the fence is clean.</div>
+                <div id="exp_q1" class="hidden mt-2 p-3 bg-blue-50 text-xs text-blue-800 rounded-xl border border-blue-100"></div>
+            </div>
+            <div>
+                <div>2. She gives Tom a big red <input type="text" id="q2" autocomplete="off" class="input-blank w-20" placeholder="?">.</div>
+                <div id="exp_q2" class="hidden mt-2 p-3 bg-blue-50 text-xs text-blue-800 rounded-xl border border-blue-100"></div>
+            </div>
+            <div>
+                <div>3. At <input type="text" id="q3" autocomplete="off" class="input-blank w-24" placeholder="?">, Sid breaks the sugar bowl.</div>
+                <div id="exp_q3" class="hidden mt-2 p-3 bg-blue-50 text-xs text-blue-800 rounded-xl border border-blue-100"></div>
+            </div>
+            <div>
+                <div>4. Tom is very <input type="text" id="q4" autocomplete="off" class="input-blank w-20" placeholder="?"> because Aunt Polly hits him.</div>
+                <div id="exp_q4" class="hidden mt-2 p-3 bg-blue-50 text-xs text-blue-800 rounded-xl border border-blue-100"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-md p-5 mb-8 border-l-4 border-purple-500 relative text-left">
+        <span class="absolute top-0 right-0 bg-purple-100 text-purple-600 text-xs font-bold px-2 py-1 rounded-bl-lg">40分</span>
+        <h3 class="font-bold text-slate-800 mb-4">Task 2: True (T) or False (F)</h3>
+        <div class="space-y-6">
+            <div>
+                <p class="text-sm font-medium mb-2">1. Aunt Polly thinks Tom did a bad job on the fence.</p>
+                <div class="flex gap-6">
+                    <label class="flex items-center"><input type="radio" name="tf1" value="T" class="mr-1 w-5 h-5"> T</label>
+                    <label class="flex items-center"><input type="radio" name="tf1" value="F" class="mr-1 w-5 h-5"> F</label>
+                </div>
+                <div id="exp_tf1" class="hidden mt-2 p-3 bg-purple-50 text-xs text-purple-800 rounded-xl border border-purple-100"></div>
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">2. Tom likes the new girl with yellow hair very much.</p>
+                <div class="flex gap-6">
+                    <label class="flex items-center"><input type="radio" name="tf2" value="T" class="mr-1 w-5 h-5"> T</label>
+                    <label class="flex items-center"><input type="radio" name="tf2" value="F" class="mr-1 w-5 h-5"> F</label>
+                </div>
+                <div id="exp_tf2" class="hidden mt-2 p-3 bg-purple-50 text-xs text-purple-800 rounded-xl border border-purple-100"></div>
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">3. Tom breaks the sugar bowl at dinner time.</p>
+                <div class="flex gap-6">
+                    <label class="flex items-center"><input type="radio" name="tf3" value="T" class="mr-1 w-5 h-5"> T</label>
+                    <label class="flex items-center"><input type="radio" name="tf3" value="F" class="mr-1 w-5 h-5"> F</label>
+                </div>
+                <div id="exp_tf3" class="hidden mt-2 p-3 bg-purple-50 text-xs text-purple-800 rounded-xl border border-purple-100"></div>
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">4. Someone throws water on Tom at night.</p>
+                <div class="flex gap-6">
+                    <label class="flex items-center"><input type="radio" name="tf4" value="T" class="mr-1 w-5 h-5"> T</label>
+                    <label class="flex items-center"><input type="radio" name="tf4" value="F" class="mr-1 w-5 h-5"> F</label>
+                </div>
+                <div id="exp_tf4" class="hidden mt-2 p-3 bg-purple-50 text-xs text-purple-800 rounded-xl border border-purple-100"></div>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold py-4 rounded-xl shadow-lg active:scale-95 transition-transform text-lg mb-8">
+        交卷 (Submit)
+    </button>
+</form>
+</main>
+
+<script>
+// 答案解析库
+const answers = {
+    q1: ["happy"], q2: ["apple"], q3: ["dinner"], q4: ["sad"],
+    tf1: "F", tf2: "T", tf3: "F", tf4: "T"
+};
+
+const explanations = {
+    q1: "✅ <b>原文定位:</b> She is very <b>happy</b>.<br>解析：姨妈看到干净整洁的篱笆非常高兴。",
+    q2: "✅ <b>原文定位:</b> She gives Tom a big red <b>apple</b>.<br>解析：姨妈奖励汤姆一个苹果。",
+    q3: "✅ <b>原文定位:</b> At <b>dinner</b>, the family sits together.<br>解析：糖罐打碎事件发生在晚饭时。",
+    q4: "✅ <b>原文定位:</b> Tom is very <b>sad</b>.<br>解析：被误解后，汤姆心情非常低落。",
+    tf1: "❌ <b>False.</b> Aunt Polly is surprised and happy.<br>解析：姨妈并没有觉得不好，反而感到惊喜。",
+    tf2: "✅ <b>True.</b> Tom likes her very much.<br>解析：汤姆见到新女孩后立刻就被迷住了。",
+    tf3: "❌ <b>False.</b> Sid breaks it.<br>解析：是希德打破了糖罐，不是汤姆。",
+    tf4: "✅ <b>True.</b> A maid throws cold water on him.<br>解析：女仆从窗户泼了一桶冷水。"
+};
+
+// 页面切换逻辑
+function startChallenge() {
+    const cover = document.getElementById('cover-page');
+    cover.style.opacity = '0';
+    setTimeout(() => {
+        cover.classList.add('hidden-node');
+        window.scrollTo(0, 0);
+    }, 400);
+}
+
+// 提交逻辑
+function submitQuiz(e) {
+    e.preventDefault();
+    let fillCorrect = 0;
+    let tfCorrect = 0;
+
+    ['q1', 'q2', 'q3', 'q4'].forEach(id => {
+        const el = document.getElementById(id);
+        const val = el.value.trim().toLowerCase();
+        const expDiv = document.getElementById('exp_' + id);
+        if (answers[id].includes(val)) {
+            el.classList.add('correct-input');
+            el.classList.remove('wrong-input');
+            fillCorrect++;
+        } else {
+            el.classList.add('wrong-input');
+            el.classList.remove('correct-input');
+        }
+        expDiv.innerHTML = explanations[id];
+        expDiv.classList.remove('hidden');
+    });
+
+    ['tf1', 'tf2', 'tf3', 'tf4'].forEach(name => {
+        const sel = document.querySelector(`input[name="${name}"]:checked`);
+        const expDiv = document.getElementById('exp_' + name);
+        if (sel && sel.value === answers[name]) {
+            tfCorrect++;
+            expDiv.innerHTML = `<span class="text-green-600 font-bold">回答正确！</span><br>` + explanations[name];
+        } else {
+            expDiv.innerHTML = `<span class="text-red-600 font-bold">回答错误或未选。</span><br>` + explanations[name];
+        }
+        expDiv.classList.remove('hidden');
+    });
+
+    const totalScore = (fillCorrect * 15) + (tfCorrect * 10);
+    document.getElementById('poster-score').innerText = totalScore + " / 100";
+    document.getElementById('poster-modal').classList.remove('hidden');
+    window.scrollTo(0, 0);
+}
+
+function closePoster() {
+    document.getElementById('poster-modal').classList.add('hidden');
+}
+
+function downloadPoster() {
+    const poster = document.getElementById('poster-content');
+    html2canvas(poster, { useCORS: true, scale: 3, backgroundColor: '#ffffff' }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = '勋章_Ch3.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
+}
+</script>
+
+<div id="poster-modal" class="hidden fixed inset-0 bg-slate-900/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div id="poster-content" class="bg-white w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl relative text-center">
+        <div class="bg-gradient-to-r from-blue-500 to-indigo-600 pt-8 pb-12 text-white">
+            <div class="text-[10px] uppercase tracking-widest opacity-80 mb-2">Achievement Unlocked</div>
+            <div class="relative inline-block mb-2">
+                <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center border-2 border-white/40">
+                    <span id="poster-score" class="text-xl font-black">0 / 100</span>
+                </div>
+            </div>
+            <h2 class="text-lg font-black mt-2">挑战成功 · 第3章勋章</h2>
+        </div>
+
+        <div class="px-6 -mt-6">
+            <div class="bg-white rounded-2xl p-5 shadow-lg border border-slate-50">
+                <div class="flex items-center gap-3 mb-6 border-b pb-4">
+                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-lg">多</div>
+                    <div class="text-left">
+                        <span class="font-bold text-slate-800">六年级 · 多多</span>
+                        <div class="text-[9px] text-slate-400">2026年2月达成</div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-left">
+                    <div class="bg-blue-50 p-2 rounded-lg text-center">
+                        <div class="text-[10px] font-bold text-blue-700">finish</div>
+                        <div class="text-[9px] text-blue-400">完成</div>
+                    </div>
+                    <div class="bg-orange-50 p-2 rounded-lg text-center">
+                        <div class="text-[10px] font-bold text-orange-700">surprise</div>
+                        <div class="text-[9px] text-orange-400">使惊讶</div>
+                    </div>
+                    <div class="bg-green-50 p-2 rounded-lg text-center">
+                        <div class="text-[10px] font-bold text-green-700">break</div>
+                        <div class="text-[9px] text-green-400">打破</div>
+                    </div>
+                    <div class="bg-purple-50 p-2 rounded-lg text-center">
+                        <div class="text-[10px] font-bold text-purple-700">sad</div>
+                        <div class="text-[9px] text-purple-400">难过的</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-6 flex flex-col gap-2">
+            <button onclick="downloadPoster()" class="w-full bg-slate-900 text-white py-3 rounded-xl font-bold text-sm">保存勋章</button>
+            <button onclick="closePoster()" class="w-full text-slate-400 py-1 text-[10px]">关闭</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
