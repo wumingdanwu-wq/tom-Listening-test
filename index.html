@@ -51,6 +51,19 @@
                 </div>
                 <i class="fas fa-chevron-right text-slate-300"></i>
             </a>
+
+            <a href="chapter4.html" class="block bg-white p-5 rounded-3xl shadow-sm border-2 border-purple-100 flex items-center justify-between active:scale-95 transition">
+    <div class="flex items-center gap-4 text-left">
+        <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold relative">
+            4
+            <div id="ch4-check" class="hidden absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                <i class="fas fa-check text-[10px] text-white"></i>
+            </div>
+        </div>
+        <span class="font-bold text-slate-700">第四章：汤姆轰动全场</span>
+    </div>
+    <i class="fas fa-chevron-right text-slate-300"></i>
+</a>
             
             <div class="text-center pt-8 opacity-40 italic text-xs">等待老爸更新...</div>
             <div class="mt-12 pb-8">
@@ -80,7 +93,13 @@
         } else {
             document.getElementById('ch3-check').classList.add('hidden');
         }
+        // 新增第四章判断
+    if (localStorage.getItem('tom_ch4_done')) {
+        document.getElementById('ch4-check').classList.remove('hidden');
+    } else {
+        document.getElementById('ch4-check').classList.add('hidden');
     }
+}
 
     // 复原/重置逻辑
     function resetProgress() {
@@ -88,6 +107,7 @@
             localStorage.removeItem('tom_ch1_done');
             localStorage.removeItem('tom_ch2_done');
             localStorage.removeItem('tom_ch3_done');
+            localStorage.removeItem('tom_ch4_done'); 
             // 如果以后有更多章节，记得在这里补上对应的 removeItem
             checkProgress(); // 立即更新界面，勾勾就消失了
         }
@@ -98,6 +118,7 @@
 </script>
 </body>
 </html>
+
 
 
 
