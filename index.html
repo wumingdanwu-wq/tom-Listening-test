@@ -75,6 +75,11 @@
         } else {
             document.getElementById('ch2-check').classList.add('hidden');
         }
+           if (localStorage.getItem('tom_ch3_done')) {
+            document.getElementById('ch3-check').classList.remove('hidden');
+        } else {
+            document.getElementById('ch3-check').classList.add('hidden');
+        }
     }
 
     // 复原/重置逻辑
@@ -92,6 +97,7 @@
 </script>
 </body>
 </html>
+
 
 
 
