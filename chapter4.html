@@ -215,6 +215,7 @@ function submitQuiz(e) {
     });
 
     let totalScore = (fillCorrect * 15) + (tfCorrect * 10);
+    localStorage.setItem('tom_ch4_done', 'true');
     document.getElementById('poster-score').innerText = totalScore + " / 100";
     document.getElementById('poster-modal').classList.remove('hidden');
     window.scrollTo(0, 0);
@@ -311,3 +312,4 @@ function downloadPoster() {
 </body>
 
 </html>
+
