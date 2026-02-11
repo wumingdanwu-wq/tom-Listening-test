@@ -87,6 +87,7 @@
         if (confirm('老爸，确定要清除所有辛苦攒下的勋章，重新挑战吗？')) {
             localStorage.removeItem('tom_ch1_done');
             localStorage.removeItem('tom_ch2_done');
+            localStorage.removeItem('tom_ch3_done');
             // 如果以后有更多章节，记得在这里补上对应的 removeItem
             checkProgress(); // 立即更新界面，勾勾就消失了
         }
@@ -97,6 +98,7 @@
 </script>
 </body>
 </html>
+
 
 
 
