@@ -230,53 +230,93 @@ function downloadPoster() {
 </script>
 
 <div id="poster-modal" class="hidden fixed inset-0 bg-slate-900/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-    <div id="poster-content" class="bg-white w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl relative text-center">
-        <div class="bg-gradient-to-r from-blue-500 to-indigo-600 pt-8 pb-12 text-white">
-            <div class="text-[10px] uppercase tracking-widest opacity-80 mb-2">Achievement Unlocked</div>
-            <div class="relative inline-block mb-2">
-                <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center border-2 border-white/40">
-                    <span id="poster-score" class="text-xl font-black">0 / 100</span>
-                </div>
-            </div>
-            <h2 class="text-lg font-black mt-2">挑战成功 · 第3章勋章</h2>
+    <div class="bg-white w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl relative">
+       <div class="bg-gradient-to-r from-orange-400 to-red-500 pt-8 pb-12 text-center text-white relative">
+    <div class="text-[10px] uppercase tracking-[0.2em] opacity-80 mb-2">Achievement Unlocked</div>
+    
+    <div class="relative inline-block mb-2">
+        <div class="w-24 h-24 bg-black/10 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-white/40 shadow-inner">
+            <span id="poster-score" class="text-2xl font-black text-white drop-shadow-md">0 / 100</span>
         </div>
+        <div class="absolute -bottom-1 -right-1 w-9 h-9 bg-white rounded-full flex items-center justify-center shadow-xl border-2 border-orange-100">
+            <i class="fas fa-trophy text-orange-500 text-base"></i>
+        </div>
+    </div>
+    
+    <h2 class="text-xl font-black tracking-tight mt-2">挑战成功 · 荣誉勋章</h2>
+</div>
 
         <div class="px-6 -mt-6">
-            <div class="bg-white rounded-2xl p-5 shadow-lg border border-slate-50">
-                <div class="flex items-center gap-3 mb-6 border-b pb-4">
-                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-lg">多</div>
+            <div class="bg-white rounded-2xl shadow-xl p-5 border border-slate-50">
+                <div class="flex items-center gap-3 mb-6 border-b border-slate-50 pb-4">
+                    <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 border-2 border-orange-50">
+                        <i class="fas fa-user-graduate text-xl"></i>
+                    </div>
                     <div class="text-left">
-                        <span class="font-bold text-slate-800">六年级 · 多多</span>
-                        <div class="text-[9px] text-slate-400">2026年2月达成</div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-black text-slate-800 text-lg">多多</span>
+                            <span class="text-[10px] bg-blue-50 text-blue-500 px-2 py-0.5 rounded-full font-bold">六年级</span>
+                        </div>
+                        <div class="text-[10px] text-slate-400 mt-0.5">
+                            <i class="far fa-clock"></i> 2026年2月 · 第三章达成
+                        </div>
                     </div>
                 </div>
-                <div class="grid grid-cols-2 gap-2 text-left">
-                    <div class="bg-blue-50 p-2 rounded-lg text-center">
-                        <div class="text-[10px] font-bold text-blue-700">finish</div>
-                        <div class="text-[9px] text-blue-400">完成</div>
+
+                <div class="space-y-5 text-left">
+                    <div>
+                        <div class="text-[10px] font-bold text-slate-400 mb-1 uppercase tracking-wider italic">Material</div>
+                        <div class="text-sm font-bold text-slate-700">《汤姆·索亚历险记》· 第三章</div>
                     </div>
-                    <div class="bg-orange-50 p-2 rounded-lg text-center">
-                        <div class="text-[10px] font-bold text-orange-700">surprise</div>
-                        <div class="text-[9px] text-orange-400">使惊讶</div>
+
+                    <div>
+                        <div class="text-[10px] font-bold text-slate-400 mb-2 flex items-center gap-1 text-left">
+                            <i class="fas fa-book-open"></i> 核心词汇 (Key Vocab)
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-blue-50/50 p-2.5 rounded-xl border border-blue-100/50">
+                                <div class="text-sm font-black text-blue-700">finish</div>
+                                <div class="text-[10px] text-blue-500/80 italic">v. 完成</div>
+                            </div>
+                            <div class="bg-orange-50/50 p-2.5 rounded-xl border border-orange-100/50">
+                                <div class="text-sm font-black text-orange-700">surprise</div>
+                                <div class="text-[10px] text-orange-500/80 italic">v./n. 使惊讶；惊喜</div>
+                            </div>
+                            <div class="bg-green-50/50 p-2.5 rounded-xl border border-green-100/50">
+                                <div class="text-sm font-black text-green-700">break</div>
+                                <div class="text-[10px] text-green-500/80 italic">v. 打破</div>
+                            </div>
+                            <div class="bg-purple-50/50 p-2.5 rounded-xl border border-purple-100/50">
+                                <div class="text-sm font-black text-purple-700">sad</div>
+                                <div class="text-[10px] text-purple-500/80 italic">adj. 难过的</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-green-50 p-2 rounded-lg text-center">
-                        <div class="text-[10px] font-bold text-green-700">break</div>
-                        <div class="text-[9px] text-green-400">打破</div>
+                </div>
+
+                <div class="flex items-center justify-between gap-4 border-t border-dashed border-slate-100 mt-6 pt-5">
+                    <div class="text-left flex-1">
+                        <div class="text-[11px] font-black text-slate-800 mb-1">AI 助学 · 跨学科成长</div>
+                        <div class="text-[9px] text-slate-400">长按识别二维码，加入英语探险</div>
                     </div>
-                    <div class="bg-purple-50 p-2 rounded-lg text-center">
-                        <div class="text-[10px] font-bold text-purple-700">sad</div>
-                        <div class="text-[9px] text-purple-400">难过的</div>
+                    <div class="w-12 h-12 bg-slate-50 p-1 rounded-lg border border-slate-100">
+                        <img src="myqr.jpg" class="w-full h-full opacity-60">
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="p-6 flex flex-col gap-2">
-            <button onclick="downloadPoster()" class="w-full bg-slate-900 text-white py-3 rounded-xl font-bold text-sm">保存勋章</button>
-            <button onclick="closePoster()" class="w-full text-slate-400 py-1 text-[10px]">关闭</button>
+        <div class="p-6 flex flex-col gap-3">
+            <button onclick="downloadPoster()" class="w-full bg-slate-900 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 shadow-xl active:scale-95 transition-transform">
+                <i class="fas fa-cloud-download-alt text-orange-400"></i> 保存勋章海报
+            </button>
+            <button onclick="closePoster()" class="w-full text-slate-400 py-2 text-xs font-bold hover:text-slate-600 transition">
+                暂时关闭
+            </button>
         </div>
     </div>
 </div>
 </body>
-
 </html>
+
+
