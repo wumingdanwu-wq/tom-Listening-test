@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>汤姆·索亚历险记 - 听力特训 Ch.13</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    
+    <style>
+        body { background-color: #f0f9ff; font-family: 'Segoe UI', Tahoma, sans-serif; -webkit-tap-highlight-color: transparent; }
+        .input-blank { border-bottom: 2px solid #94a3b8; background: transparent; text-align: center; color: #0369a1; font-weight: bold; border-radius: 0; padding: 0 5px; transition: all 0.3s; }
+        .input-blank:focus { border-color: #0ea5e9; outline: none; background-color: rgba(14, 165, 233, 0.1); }
+        .correct-input { border-color: #22c55e !important; color: #16a34a !important; background-color: #f0fdf4 !important; }
+        .wrong-input { border-color: #ef4444 !important; color: #dc2626 !important; background-color: #fef2f2 !important; }
+        #cover-page { transition: opacity 0.5s ease; }
+    </style>
+</head>
+
+<body class="pb-16">
+
+<div id="cover-page" class="fixed inset-0 z-50 bg-gradient-to-b from-sky-600 to-indigo-800 flex flex-col items-center justify-center p-6 text-white text-center">
+    <div class="w-32 h-32 bg-white/20 rounded-3xl backdrop-blur-md flex items-center justify-center mb-6 shadow-2xl">
+        <i class="fas fa-ship text-5xl text-sky-200"></i>
+    </div>
+    <h1 class="text-3xl font-black mb-2 tracking-tight">汤姆·索亚历险记</h1>
+    <p class="text-sky-100 mb-8 opacity-80">六年级英语·跨学科听力特训</p>
+    
+    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 mb-10 w-full max-w-xs border border-white/20">
+        <div class="flex justify-between text-xs mb-2 text-left">
+            <span>当前章节</span>
+            <span class="font-bold text-sky-300">Chapter 13</span>
+        </div>
+        <div class="h-1.5 w-full bg-white/20 rounded-full overflow-hidden">
+            <div class="h-full bg-sky-400" style="width: 65%"></div>
+        </div>
+    </div>
+
+    <button onclick="startChallenge()" class="w-full max-w-xs bg-white text-sky-700 font-bold py-4 rounded-2xl shadow-xl active:scale-95 transition-transform text-lg">
+        开启荒岛冒险
+    </button>
+</div>
+
+<header class="bg-white shadow-sm sticky top-0 z-20 px-4 py-3 flex justify-between items-center text-left">
+    <h1 class="text-lg font-bold text-slate-800"><i class="fas fa-headphones text-sky-500 mr-2"></i>Tom Sawyer (Ch.13)</h1>
+    <span class="text-xs bg-sky-100 text-sky-700 px-2 py-1 rounded">Grade 6</span>
+</header>
+
+<main class="px-4 mt-4 max-w-md mx-auto">
+    <div class="bg-white rounded-2xl shadow-lg p-5 mb-6 border border-sky-100">
+        <h2 class="font-bold text-slate-700 mb-3 text-left">Step 1: Listen</h2>
+        <audio controls class="w-full h-10 mb-4 rounded bg-slate-100">
+            <source src="tom13.wav" type="audio/wav">
+        </audio>
+
+        <details class="group text-left">
+            <summary class="flex items-center justify-between cursor-pointer list-none text-sm text-sky-600 font-bold bg-sky-50 p-3 rounded-lg hover:bg-sky-100 transition">
+                <span>📖 听不懂？点击查看第13章原文</span>
+                <i class="fas fa-chevron-down transition group-open:rotate-180"></i>
+            </summary>
+            <div class="mt-2 text-sm text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-lg border border-slate-200 font-serif h-64 overflow-y-auto text-left">
+                <p class="mb-3"><strong class="text-slate-900">Narrator:</strong><br>It is late at night. The sky is dark and quiet. Tom stands on a hill. He calls his friends.</p>
+                <p class="mb-3"><strong class="text-slate-900">Voice:</strong><br>"Who is there?"</p>
+                <p class="mb-3"><strong class="text-slate-900">Tom:</strong><br>"It is Tom! Tell me your names."</p>
+                <p class="mb-3"><strong class="text-slate-900">Huck:</strong><br>"I am Huck!"</p>
+                <p class="mb-3"><strong class="text-slate-900">Joe:</strong><br>"And I am Joe!"</p>
+                <p class="mb-3"><strong class="text-slate-900">Narrator:</strong><br>Tom gives them new names. They want to take a trip. Tom brings some meat and other food. They are very excited. They go to an island by boat. They feel very happy!</p>
+            </div>
+        </details>
+    </div>
+
+    <form id="quizForm" onsubmit="submitQuiz(event)">
+        <div class="bg-white rounded-2xl shadow-md p-5 mb-5 border-l-4 border-sky-500 relative text-left">
+            <span class="absolute top-0 right-0 bg-sky-100 text-sky-600 text-xs font-bold px-2 py-1 rounded-bl-lg">50分</span>
+            <h3 class="font-bold text-slate-800 mb-4">Task 1: Fill in the blanks</h3>
+            <div class="space-y-8 text-base text-slate-700 leading-loose">
+                <div>
+                    <div>1. It is late at <input type="text" id="q1" autocomplete="off" class="input-blank w-24" placeholder="?">.</div>
+                    <div id="exp_q1" class="hidden mt-2 p-3 bg-sky-50 text-xs text-sky-800 rounded-xl border border-sky-100"></div>
+                </div>
+                <div>
+                    <div>2. They want to take a <input type="text" id="q2" autocomplete="off" class="input-blank w-20" placeholder="?">.</div>
+                    <div id="exp_q2" class="hidden mt-2 p-3 bg-sky-50 text-xs text-sky-800 rounded-xl border border-sky-100"></div>
+                </div>
+                <div>
+                    <div>3. Tom brings some <input type="text" id="q3" autocomplete="off" class="input-blank w-24" placeholder="?"> and other food.</div>
+                    <div id="exp_q3" class="hidden mt-2 p-3 bg-sky-50 text-xs text-sky-800 rounded-xl border border-sky-100"></div>
+                </div>
+                <div>
+                    <div>4. They are very <input type="text" id="q4" autocomplete="off" class="input-blank w-24" placeholder="?">.</div>
+                    <div id="exp_q4" class="hidden mt-2 p-3 bg-sky-50 text-xs text-sky-800 rounded-xl border border-sky-100"></div>
+                </div>
+                <div>
+                    <div>5. They go to an island by <input type="text" id="q5" autocomplete="off" class="input-blank w-24" placeholder="?">.</div>
+                    <div id="exp_q5" class="hidden mt-2 p-3 bg-sky-50 text-xs text-sky-800 rounded-xl border border-sky-100"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-md p-5 mb-8 border-l-4 border-orange-500 relative text-left">
+            <span class="absolute top-0 right-0 bg-orange-100 text-orange-600 text-xs font-bold px-2 py-1 rounded-bl-lg">50分</span>
+            <h3 class="font-bold text-slate-800 mb-4">Task 2: True (T) or False (F)</h3>
+            <div class="space-y-6">
+                <div>
+                    <p class="text-sm font-medium mb-2">1. Tom meets his friends in the morning.</p>
+                    <div class="flex gap-6">
+                        <label class="flex items-center"><input type="radio" name="tf1" value="T" class="mr-1 w-5 h-5"> T</label>
+                        <label class="flex items-center"><input type="radio" name="tf1" value="F" class="mr-1 w-5 h-5"> F</label>
+                    </div>
+                    <div id="exp_tf1" class="hidden mt-2 p-3 bg-orange-50 text-xs text-orange-800 rounded-xl border border-orange-100"></div>
+                </div>
+                <div>
+                    <p class="text-sm font-medium mb-2">2. Tom asks his friends to tell their names.</p>
+                    <div class="flex gap-6">
+                        <label class="flex items-center"><input type="radio" name="tf2" value="T" class="mr-1 w-5 h-5"> T</label>
+                        <label class="flex items-center"><input type="radio" name="tf2" value="F" class="mr-1 w-5 h-5"> F</label>
+                    </div>
+                    <div id="exp_tf2" class="hidden mt-2 p-3 bg-orange-50 text-xs text-orange-800 rounded-xl border border-orange-100"></div>
+                </div>
+                <div>
+                    <p class="text-sm font-medium mb-2">3. They want to take a trip.</p>
+                    <div class="flex gap-6">
+                        <label class="flex items-center"><input type="radio" name="tf3" value="T" class="mr-1 w-5 h-5"> T</label>
+                        <label class="flex items-center"><input type="radio" name="tf3" value="F" class="mr-1 w-5 h-5"> F</label>
+                    </div>
+                    <div id="exp_tf3" class="hidden mt-2 p-3 bg-orange-50 text-xs text-orange-800 rounded-xl border border-orange-100"></div>
+                </div>
+                <div>
+                    <p class="text-sm font-medium mb-2">4. They go to the island by bus.</p>
+                    <div class="flex gap-6">
+                        <label class="flex items-center"><input type="radio" name="tf4" value="T" class="mr-1 w-5 h-5"> T</label>
+                        <label class="flex items-center"><input type="radio" name="tf4" value="F" class="mr-1 w-5 h-5"> F</label>
+                    </div>
+                    <div id="exp_tf4" class="hidden mt-2 p-3 bg-orange-50 text-xs text-orange-800 rounded-xl border border-orange-100"></div>
+                </div>
+                <div>
+                    <p class="text-sm font-medium mb-2">5. They feel very sad at last.</p>
+                    <div class="flex gap-6">
+                        <label class="flex items-center"><input type="radio" name="tf5" value="T" class="mr-1 w-5 h-5"> T</label>
+                        <label class="flex items-center"><input type="radio" name="tf5" value="F" class="mr-1 w-5 h-5"> F</label>
+                    </div>
+                    <div id="exp_tf5" class="hidden mt-2 p-3 bg-orange-50 text-xs text-orange-800 rounded-xl border border-orange-100"></div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="w-full bg-gradient-to-r from-sky-600 to-indigo-600 text-white font-bold py-4 rounded-xl shadow-lg active:scale-95 transition-transform text-lg mb-8">
+            交卷 (Submit)
+        </button>
+    </form>
+</main>
+
+<div id="poster-modal" class="hidden fixed inset-0 bg-slate-900/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div id="poster-content" class="bg-white w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl relative">
+       <div class="bg-gradient-to-r from-sky-500 to-indigo-600 pt-8 pb-12 text-center text-white relative">
+            <div class="text-[10px] uppercase tracking-[0.2em] opacity-80 mb-2">Achievement Unlocked</div>
+            <div class="relative inline-block mb-2">
+                <div class="w-24 h-24 bg-black/10 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-white/40 shadow-inner">
+                    <span id="poster-score" class="text-2xl font-black text-white drop-shadow-md">0 / 100</span>
+                </div>
+                <div class="absolute -bottom-1 -right-1 w-9 h-9 bg-white rounded-full flex items-center justify-center shadow-xl border-2 border-sky-100">
+                    <i class="fas fa-anchor text-sky-500 text-base"></i>
+                </div>
+            </div>
+            <h2 class="text-xl font-black tracking-tight mt-2">航岛勇士 · 荣誉勋章</h2>
+        </div>
+
+        <div class="px-6 -mt-6">
+            <div class="bg-white rounded-2xl shadow-xl p-5 border border-slate-50">
+                <div class="flex items-center gap-3 mb-6 border-b border-slate-50 pb-4 text-left">
+                    <div class="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center text-sky-600 border-2 border-sky-50">
+                        <i class="fas fa-user-graduate text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-black text-slate-800 text-lg">多多</span>
+                            <span class="text-[10px] bg-sky-50 text-sky-500 px-2 py-0.5 rounded-full font-bold">六年级</span>
+                        </div>
+                        <div class="text-[10px] text-slate-400 mt-0.5">
+                            <i class="far fa-clock"></i> 2026年2月 · 第十三章达成
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-5 text-left">
+                    <div>
+                        <div class="text-[10px] font-bold text-slate-400 mb-1 uppercase tracking-wider italic">Material</div>
+                        <div class="text-sm font-bold text-slate-700">《汤姆·索亚历险记》· 第13章</div>
+                    </div>
+
+                    <div>
+                        <div class="text-[10px] font-bold text-slate-400 mb-2 flex items-center gap-1">
+                            <i class="fas fa-book-open"></i> 核心词汇 (Key Vocab)
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-blue-50/50 p-2.5 rounded-xl border border-blue-100/50">
+                                <div class="text-sm font-black text-blue-700">night</div>
+                                <div class="text-[10px] text-blue-500/80 italic">夜晚</div>
+                            </div>
+                            <div class="bg-orange-50/50 p-2.5 rounded-xl border border-orange-100/50">
+                                <div class="text-sm font-black text-orange-700">trip</div>
+                                <div class="text-[10px] text-orange-500/80 italic">旅行</div>
+                            </div>
+                            <div class="bg-green-50/50 p-2.5 rounded-xl border border-green-100/50">
+                                <div class="text-sm font-black text-green-700">excited</div>
+                                <div class="text-[10px] text-green-500/80 italic">激动的</div>
+                            </div>
+                            <div class="bg-purple-50/50 p-2.5 rounded-xl border border-purple-100/50">
+                                <div class="text-sm font-black text-purple-700">boat</div>
+                                <div class="text-[10px] text-purple-500/80 italic">小船</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-6 flex flex-col gap-3">
+            <button onclick="downloadPoster()" class="w-full bg-slate-900 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 shadow-xl active:scale-95 transition-transform">
+                <i class="fas fa-cloud-download-alt text-sky-400"></i>
+                保存荣誉海报
+            </button>
+            <button onclick="closePoster()" class="w-full text-slate-400 py-2 text-xs font-bold hover:text-slate-600 transition">
+                暂时关闭
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+// --- Chapter 13 Logic ---
+const answers = {
+    q1: ["night"], 
+    q2: ["trip"],
+    q3: ["meat"],
+    q4: ["excited"],
+    q5: ["boat"],
+    tf1: "F", tf2: "T", tf3: "T", tf4: "F", tf5: "F"
+};
+
+const explanations = {
+    q1: "✅ <b>原文定位:</b> It is late at <b>night</b>. <br><span class='text-gray-500'>解析: 故事发生在夜晚，营造了神秘的探险氛围。</span>",
+    q2: "✅ <b>原文定位:</b> They want to take a <b>trip</b>. <br><span class='text-gray-500'>解析: take a trip 是六年级重点短语。</span>",
+    q3: "✅ <b>原文定位:</b> Tom brings some <b>meat</b>... <br><span class='text-gray-500'>解析: meat 是基础词汇，对应原著中的干粮。</span>",
+    q4: "✅ <b>原文定位:</b> They are very <b>excited</b>. <br><span class='text-gray-500'>解析: excited 描述人物激动的心情。</span>",
+    q5: "✅ <b>原文定位:</b> They go to an island by <b>boat</b>. <br><span class='text-gray-500'>解析: by boat 考察交通方式表达。</span>",
+    
+    tf1: "❌ <b>False.</b> 原文说 'It is late at night'，他们在深夜相遇，不是早晨。",
+    tf2: "✅ <b>True.</b> 汤姆要求他们报上名来 ('Tell me your names')。",
+    tf3: "✅ <b>True.</b> 他们确实想去旅行/探险 ('take a trip')。",
+    tf4: "❌ <b>False.</b> 他们是坐船去的 ('by boat')，不是坐公交车。",
+    tf5: "❌ <b>False.</b> 最后他们感到非常开心 ('feel very happy')，而不是伤心。"
+};
+
+window.startChallenge = function() {
+    const cover = document.getElementById('cover-page');
+    if (cover) {
+        cover.style.display = 'none';
+        window.scrollTo(0, 0);
+    }
+};
+
+window.closePoster = function() {
+    document.getElementById('poster-modal').classList.add('hidden');
+};
+
+window.submitQuiz = function(e) {
+    e.preventDefault();
+    let fillCorrect = 0;
+    let tfCorrect = 0;
+
+    // Check Task 1 (5 questions)
+    ['q1', 'q2', 'q3', 'q4', 'q5'].forEach(id => {
+        let el = document.getElementById(id);
+        let expDiv = document.getElementById('exp_' + id);
+        if (el) {
+            let val = el.value.trim().toLowerCase();
+            if (answers[id].includes(val)) {
+                el.classList.add('correct-input');
+                el.classList.remove('wrong-input');
+                fillCorrect++;
+            } else {
+                el.classList.add('wrong-input');
+                el.classList.remove('correct-input');
+            }
+        }
+        if (expDiv) {
+            expDiv.innerHTML = explanations[id];
+            expDiv.classList.remove('hidden');
+        }
+    });
+
+    // Check Task 2 (5 questions)
+    ['tf1', 'tf2', 'tf3', 'tf4', 'tf5'].forEach(name => {
+        let sel = document.querySelector(`input[name="${name}"]:checked`);
+        let expDiv = document.getElementById('exp_' + name);
+        if (expDiv) {
+            if (sel && sel.value === answers[name]) {
+                tfCorrect++;
+                expDiv.innerHTML = `<span class="text-green-600 font-bold">回答正确！</span><br>` + explanations[name];
+            } else {
+                expDiv.innerHTML = `<span class="text-red-600 font-bold">回答错误。</span><br>` + explanations[name];
+            }
+            expDiv.classList.remove('hidden');
+        }
+    });
+
+    // Scoring: Each question 10 points (total 100)
+    let totalScore = (fillCorrect * 10) + (tfCorrect * 10);
+    localStorage.setItem('tom_ch13_done', 'true');
+    document.getElementById('poster-score').innerText = totalScore + " / 100";
+    document.getElementById('poster-modal').classList.remove('hidden');
+    window.scrollTo(0, 0);
+};
+
+window.downloadPoster = function() {
+    const poster = document.getElementById('poster-content');
+    html2canvas(poster, { useCORS: true, scale: 3, backgroundColor: '#ffffff' }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = '多多汤姆索亚Ch13荣誉勋章.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
+};
+</script>
+
+</body>
+</html>
