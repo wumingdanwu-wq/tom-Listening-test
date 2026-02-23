@@ -114,6 +114,19 @@
                 <i class="fas fa-chevron-right text-slate-300"></i>
             </a>
 
+            <a href="chapter13.html" class="block bg-white p-5 rounded-3xl shadow-sm border-2 border-sky-100 flex items-center justify-between active:scale-95 transition">
+                <div class="flex items-center gap-4 text-left">
+                    <div class="w-10 h-10 bg-sky-500 rounded-full flex items-center justify-center text-white font-bold relative">
+                        13
+                        <div id="ch13-check" class="hidden absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                            <i class="fas fa-check text-[10px] text-white"></i>
+                        </div>
+                    </div>
+                    <span class="font-bold text-slate-700">第十三章：逃往荒岛</span>
+                </div>
+                <i class="fas fa-chevron-right text-slate-300"></i>
+            </a>
+
             <div class="text-center pt-8">
                 <div class="inline-block px-4 py-2 bg-slate-200/50 rounded-full text-[10px] text-slate-400 italic">
                     <i class="fas fa-hourglass-half mr-1"></i> 等待老爸更新后续章节...
@@ -129,12 +142,13 @@
     </div>
 
 <script>
-    const TOTAL_CHAPTERS = 35; // 总章节数
+    const TOTAL_CHAPTERS = 35; // 总章节数保持35，给孩子长期目标
+
+    // 需要检查的章节数组，新增了 ch13
+    const chapters = ['ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7', 'ch13'];
 
     // 核心进度检查逻辑
     function checkProgress() {
-        // 更新了章节数组，加入了 ch7
-        const chapters = ['ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7'];
         let doneCount = 0;
 
         chapters.forEach(ch => {
@@ -150,16 +164,15 @@
             }
         });
 
-        // 更新进度条 (总数35保持不变，激励孩子)
+        // 更新进度条
         const progressPercent = (doneCount / TOTAL_CHAPTERS) * 100;
         document.getElementById('progress-bar').style.width = progressPercent + '%';
         document.getElementById('progress-text').innerText = `${doneCount} / ${TOTAL_CHAPTERS}`;
     }
 
+    // 重置进度逻辑
     function resetProgress() {
         if (confirm('老爸，确定要清除所有辛苦攒下的勋章，重新挑战吗？')) {
-            // 更新了重置数组，加入了 ch7
-            const chapters = ['ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7'];
             chapters.forEach(ch => {
                 localStorage.removeItem('tom_' + ch + '_done');
             });
@@ -171,4 +184,3 @@
 </script>
 </body>
 </html>
-
